@@ -119,11 +119,19 @@ int main() {
     cout << endl;
     */
 
-    int num[4];
+    int num[4], num1[4];
     randomNumberWithRepetition(num);
+    randomNumberNoRepetition(num1);
 
     for (int i = 0; i < 4; i++)
     {
         cout << num[i] << " ";
+    }
+
+    cout << endl<<endl;
+
+    for (int i = 0; i < 4; i++)
+    {
+        cout << num1[i] << " ";
     }
 }
