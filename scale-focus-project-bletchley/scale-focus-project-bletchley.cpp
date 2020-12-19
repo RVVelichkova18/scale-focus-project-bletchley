@@ -35,9 +35,30 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
     return count;
 }
 
-void outputResult(int* code, int* userGuess) {
+void outputResult(int* code, int* userGuess) 
+{
     cout << "The count of guessed numbers which are at the same position as in the code is: " << checkForSameNumberAndPosition(code, userGuess) << endl;
     cout << "The count of guessed numbers which are not at the same position as in the code is: " << checkOnlyForSameNumbers(code, userGuess) << endl;
+}
+
+
+
+void displayMainMenu()
+{
+    cout << "Player vs Player" << endl;
+    cout << "Player vs Computer" << endl;
+}
+
+void displayLevelOneOptions()
+{
+    cout << "Task 1 cant repeat numbers" << endl;
+    cout << "Task 2 can  repeat numbers" << endl;
+}
+
+void displayLevelTwoOptions()
+{
+    cout << "Task 1 cant repeat numbers" << endl;
+    cout << "Task 2 can  repeat numbers" << endl;
 }
 
 int main() {
