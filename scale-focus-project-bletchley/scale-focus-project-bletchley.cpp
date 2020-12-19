@@ -18,6 +18,12 @@ int readInt() {
     return num;
 }
 
+bool checkInRange(int num) {
+    if (num < 0 or num>7)
+        return false
+    return true;
+}
+
 int randomInt() {
     return rand() % (7 - 0 + 1) + 0;
 }
