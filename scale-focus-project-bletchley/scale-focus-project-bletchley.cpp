@@ -6,6 +6,15 @@ int randomInt() {
     return rand() % (7 - 0 + 1) + 0;
 }
 
+int* randomNumberWithRepetition(int* num) {
+
+    for (int i = 0; i < 4; i++) {
+        num[i] = randomInt();
+    }
+
+    return num;
+}
+
 int checkForSameNumberAndPosition(int* code, int* userGuess) {
     int count = 0;
 
@@ -64,7 +73,7 @@ void displayLevelTwoOptions()
 int main() {
     srand(time(NULL));
 
-    int code[4] = { 0,7,7,7 };
+    /*int code[4] = { 0,7,7,7 };
     int userGuess[4] = { 7,4,2,4 };
 
     outputResult(code, userGuess);
@@ -77,4 +86,9 @@ int main() {
     for (int i = 0; i < 4; i++)
         cout << userGuess[i] << " ";
     cout << endl;
+    */
+
+    int num[4] = randomNumber();
+    for (int i = 0; i < 4; i++)
+        cout << num[i];
 }
