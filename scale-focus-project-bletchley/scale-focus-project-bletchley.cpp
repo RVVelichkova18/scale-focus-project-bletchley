@@ -2,6 +2,22 @@
 #include <time.h>   
 using namespace std;
 
+int readInt() {
+
+    int num;
+
+    while (!(cin >> num)) {
+
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << endl;
+        cout << "You have to enter a whole number!" << endl;
+        cout << endl;
+    }
+
+    return num;
+}
+
 int randomInt() {
     return rand() % (7 - 0 + 1) + 0;
 }
