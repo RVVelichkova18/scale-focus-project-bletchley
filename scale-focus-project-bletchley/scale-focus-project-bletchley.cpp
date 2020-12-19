@@ -19,9 +19,9 @@ int readInt() {
 }
 
 bool checkInRange(int num) {
-    if (num < 0 or num>7)
-        return false
-    return true;
+    if (num >= 0 and num <= 7)
+        return true;
+    return false;
 }
 
 int randomInt() {
