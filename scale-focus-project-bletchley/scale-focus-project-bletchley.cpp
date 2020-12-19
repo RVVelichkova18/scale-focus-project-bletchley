@@ -15,6 +15,37 @@ int* randomNumberWithRepetition(int* num) {
     return num;
 }
 
+int* randomNumberNoRepetition(int* num) {
+
+    num[0] = randomInt();
+
+    bool noRep;
+
+    for (int i = 1; i < 4; i++) {
+
+        noRep = false;
+
+        while (noRep == false) {
+
+            int check = 0;
+
+            num[i] = randomInt();
+
+            for (int j = 0; j < i; j++) {
+
+                if (num[i] != num[j])
+                    check++;
+            }
+
+            if (check == i)
+                noRep = true;
+        }
+
+    }
+
+    return num;
+}
+
 int checkForSameNumberAndPosition(int* code, int* userGuess) {
     int count = 0;
 
