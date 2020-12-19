@@ -88,7 +88,11 @@ int main() {
     cout << endl;
     */
 
-    int num[4] = randomNumber();
+    int num[4];
+    randomNumberWithRepetition(num);
+
     for (int i = 0; i < 4; i++)
-        cout << num[i];
+    {
+        cout << num[i] << " ";
+    }
 }
