@@ -24,6 +24,19 @@ bool checkInRange(int num) {
     return false;
 }
 
+bool checkForRepeatingNumbers(int* userGuess) {
+
+    for (int i = 1; i < 4; i++) {
+        for (int j = 0; j < i; j++) {
+            if (userGuess[i] == userGuess[j]) {
+                return false;
+            }
+        }
+    }
+
+}
+
+
 int randomInt() {
     return rand() % (7 - 0 + 1) + 0;
 }
