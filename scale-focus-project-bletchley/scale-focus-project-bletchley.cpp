@@ -129,7 +129,23 @@ void displayMainMenu()
     cout << "|  2) Level 2: Player vs Computer |" << endl;
     cout << "|  3) Exit                        |" << endl;
     cout << "|_________________________________|" << endl;
-
+    int choice;
+    cin >> choice;
+    switch (choice)
+    {
+    case 1:
+        //playerVsPlayer(function);
+        break;
+    case 2:
+        //playerVsComputer(function);
+        break;
+    case 3:
+        exit(0);
+        break;
+    default:
+        cout << "There is not such a option!" << endl;
+        break;
+    }
 }
 
 void displayLevelOneOptions()
