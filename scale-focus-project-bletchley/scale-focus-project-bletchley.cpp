@@ -2,8 +2,83 @@
 #include <time.h>   
 using namespace std;
 
+int readInt() {
+
+    int num;
+
+    while (!(cin >> num)) {
+
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << endl;
+        cout << "You have to enter a whole number!" << endl;
+        cout << endl;
+    }
+
+    return num;
+}
+
+bool checkInRange(int num) {
+    if (num >= 0 and num <= 7)
+        return true;
+    return false;
+}
+
+bool checkForRepeatingNumbers(int* userGuess) {
+
+    for (int i = 1; i < 4; i++) {
+        for (int j = 0; j < i; j++) {
+            if (userGuess[i] == userGuess[j]) {
+                return false;
+            }
+        }
+    }
+
+}
+
+
 int randomInt() {
     return rand() % (7 - 0 + 1) + 0;
+}
+
+int* randomNumberWithRepetition(int* num) {
+
+    for (int i = 0; i < 4; i++) {
+        num[i] = randomInt();
+    }
+
+    return num;
+}
+
+int* randomNumberNoRepetition(int* num) {
+
+    num[0] = randomInt();
+
+    bool noRep;
+
+    for (int i = 1; i < 4; i++) {
+
+        noRep = false;
+
+        while (noRep == false) {
+
+            int check = 0;
+
+            num[i] = randomInt();
+
+            for (int j = 0; j < i; j++) {
+
+                if (num[i] != num[j])
+                    check++;
+            }
+
+            if (check == i)
+                noRep = true;
+        }
+
+    }
+
+    return num;
 }
 
 int checkForSameNumberAndPosition(int* code, int* userGuess) {
@@ -85,7 +160,7 @@ void displayLevelTwoOptions()
 int main() {
     srand(time(NULL));
 
-    int code[4] = { 0,7,7,7 };
+    /*int code[4] = { 0,7,7,7 };
     int userGuess[4] = { 7,4,2,4 };
 
     outputResult(code, userGuess);
@@ -98,4 +173,21 @@ int main() {
     for (int i = 0; i < 4; i++)
         cout << userGuess[i] << " ";
     cout << endl;
+    */
+
+    int num[4], num1[4];
+    randomNumberWithRepetition(num);
+    randomNumberNoRepetition(num1);
+
+    for (int i = 0; i < 4; i++)
+    {
+        cout << num[i] << " ";
+    }
+
+    cout << endl<<endl;
+
+    for (int i = 0; i < 4; i++)
+    {
+        cout << num1[i] << " ";
+    }
 }
