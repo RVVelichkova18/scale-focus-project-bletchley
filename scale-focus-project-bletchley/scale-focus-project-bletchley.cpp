@@ -17,7 +17,7 @@ int checkForSameNumberAndPosition(int* code, int* userGuess) {
     }
 
     return count;
-}
+    }
 
 int checkOnlyForSameNumbers(int* code, int* userGuess) {
     int count = 0;
@@ -45,20 +45,41 @@ void outputResult(int* code, int* userGuess)
 
 void displayMainMenu()
 {
-    cout << "Player vs Player" << endl;
-    cout << "Player vs Computer" << endl;
+    cout << "___________________________________" << endl;
+    cout << "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|" << endl;
+    cout << "|   Welcome to our Enigma game!   |" << endl;
+    cout << "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|" << endl;
+    cout << "|                                 |" << endl;
+    cout << "|  1) Level 1: Player vs Player   |" << endl;
+    cout << "|  2) Level 2: Player vs Computer |" << endl;
+    cout << "|  3) Exit                        |" << endl;
+    cout << "|_________________________________|" << endl;
+
 }
 
 void displayLevelOneOptions()
 {
-    cout << "Task 1 cant repeat numbers" << endl;
-    cout << "Task 2 can  repeat numbers" << endl;
+    cout << "_____________________________________________" << endl;
+    cout << "|                  LEVEL 1                  |" << endl;
+    cout << "|                                           |" << endl;
+    cout << "|  1) Task 1: play with unrepeatable digits |" << endl;
+    cout << "|  2) Task 2: play with repeatable digits   |" << endl;
+    cout << "|  3) Exit                                  |" << endl;
+    cout << "|___________________________________________|" << endl;
+
 }
+
 
 void displayLevelTwoOptions()
 {
-    cout << "Task 1 cant repeat numbers" << endl;
-    cout << "Task 2 can  repeat numbers" << endl;
+    cout << "_____________________________________________" << endl;
+    cout << "|                  LEVEL 2                  |" << endl;
+    cout << "|                                           |" << endl;
+    cout << "|  1) Task 1: play with unrepeatable digits |" << endl;
+    cout << "|  2) Task 2: play with repeatable digits   |" << endl;
+    cout << "|  3) Exit                                  |" << endl;
+    cout << "|___________________________________________|" << endl;
+
 }
 
 int main() {
