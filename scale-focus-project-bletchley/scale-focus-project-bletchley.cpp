@@ -1,6 +1,64 @@
 #include <iostream>
 #include <time.h>   
+
 using namespace std;
+
+
+int readInt();
+bool checkInRange(int num);
+bool checkForRepeatingNumbers(int* userGuess);
+
+
+int randomInt();
+int* randomNumberWithRepetition(int* num);
+int* randomNumberNoRepetition(int* num);
+int checkForSameNumberAndPosition(int* code, int* userGuess);
+int checkOnlyForSameNumbers(int* code, int* userGuess);
+void outputResult(int* code, int* userGuess);
+
+
+void displayMainMenu();
+void displayLevelOneOptions();
+void displayLevelTwoOptions();
+
+
+int main() {
+    srand(time(NULL));
+
+    /*int code[4] = { 0,7,7,7 };
+    int userGuess[4] = { 7,4,2,4 };
+
+    outputResult(code, userGuess);
+    
+    for (int i = 0; i < 4; i++)
+        cout << code[i] << " ";
+    cout << endl;
+  
+
+    for (int i = 0; i < 4; i++)
+        cout << userGuess[i] << " ";
+    cout << endl;
+    */
+
+    int num[4], num1[4];
+    randomNumberWithRepetition(num);
+    randomNumberNoRepetition(num1);
+
+    for (int i = 0; i < 4; i++)
+    {
+        cout << num[i] << " ";
+    }
+
+    cout << endl<<endl;
+
+    for (int i = 0; i < 4; i++)
+    {
+        cout << num1[i] << " ";
+    }
+}
+
+
+
 
 int readInt() {
 
@@ -92,7 +150,7 @@ int checkForSameNumberAndPosition(int* code, int* userGuess) {
     }
 
     return count;
-    }
+}
 
 int checkOnlyForSameNumbers(int* code, int* userGuess) {
     int count = 0;
@@ -110,11 +168,14 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
     return count;
 }
 
-void outputResult(int* code, int* userGuess) 
+void outputResult(int* code, int* userGuess)
 {
     cout << "The count of guessed numbers which are at the same position as in the code is: " << checkForSameNumberAndPosition(code, userGuess) << endl;
     cout << "The count of guessed numbers which are not at the same position as in the code is: " << checkOnlyForSameNumbers(code, userGuess) << endl;
 }
+
+
+
 
 
 
@@ -180,7 +241,6 @@ void displayLevelOneOptions()
 
 }
 
-
 void displayLevelTwoOptions()
 {
     cout << "_____________________________________________" << endl;
@@ -211,39 +271,4 @@ void displayLevelTwoOptions()
         break;
     }
 
-}
-
-int main() {
-    srand(time(NULL));
-
-    /*int code[4] = { 0,7,7,7 };
-    int userGuess[4] = { 7,4,2,4 };
-
-    outputResult(code, userGuess);
-    
-    for (int i = 0; i < 4; i++)
-        cout << code[i] << " ";
-    cout << endl;
-  
-
-    for (int i = 0; i < 4; i++)
-        cout << userGuess[i] << " ";
-    cout << endl;
-    */
-
-    int num[4], num1[4];
-    randomNumberWithRepetition(num);
-    randomNumberNoRepetition(num1);
-
-    for (int i = 0; i < 4; i++)
-    {
-        cout << num[i] << " ";
-    }
-
-    cout << endl<<endl;
-
-    for (int i = 0; i < 4; i++)
-    {
-        cout << num1[i] << " ";
-    }
 }
