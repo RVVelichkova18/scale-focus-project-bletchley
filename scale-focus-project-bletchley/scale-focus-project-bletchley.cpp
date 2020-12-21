@@ -1,21 +1,18 @@
 #include <iostream>
 #include <time.h>   
-
 using namespace std;
-
 
 int readInt();
 bool checkInRange(int num);
 bool checkForRepeatingNumbers(int* userGuess);
 
-
 int randomInt();
 int* randomNumberWithRepetition(int* num);
 int* randomNumberNoRepetition(int* num);
+
 int checkForSameNumberAndPosition(int* code, int* userGuess);
 int checkOnlyForSameNumbers(int* code, int* userGuess);
 void outputResult(int* code, int* userGuess);
-
 
 void displayMainMenu();
 void displayLevelOneOptions();
@@ -25,8 +22,13 @@ void displayLevelTwoOptions();
 int main() {
     srand(time(NULL));
 
-    /*int code[4] = { 0,7,7,7 };
-    int userGuess[4] = { 7,4,2,4 };
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "   Welcome to our Enigma game!   " << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    displayMainMenu();
+
+     /*    int code[4] = { 1,2,2,2 };
+    int userGuess[4] = { 1,2,3,2 };
 
     outputResult(code, userGuess);
     
@@ -40,7 +42,7 @@ int main() {
     cout << endl;
     */
 
-    int num[4], num1[4];
+    /*int num[4], num1[4];
     randomNumberWithRepetition(num);
     randomNumberNoRepetition(num1);
 
@@ -54,7 +56,7 @@ int main() {
     for (int i = 0; i < 4; i++)
     {
         cout << num1[i] << " ";
-    }
+    }*/
 }
 
 
@@ -69,11 +71,11 @@ int readInt() {
         cin.clear();
         cin.ignore(INT_MAX, '\n');
         cout << endl;
-        cout << "You have to enter a whole number!" << endl;
-        cout << endl;
+        cout << "You have to enter a number! Please try again: ";
     }
-
+ 
     return num;
+   
 }
 
 bool checkInRange(int num) {
@@ -87,11 +89,12 @@ bool checkForRepeatingNumbers(int* userGuess) {
     for (int i = 1; i < 4; i++) {
         for (int j = 0; j < i; j++) {
             if (userGuess[i] == userGuess[j]) {
-                return false;
+                return true;
             }
         }
     }
 
+    return false;
 }
 
 
@@ -139,6 +142,7 @@ int* randomNumberNoRepetition(int* num) {
     return num;
 }
 
+
 int checkForSameNumberAndPosition(int* code, int* userGuess) {
     int count = 0;
 
@@ -168,49 +172,135 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
     return count;
 }
 
+void enterNumbers(int* code) {
+    cout << endl;
+    cout << "Enter 4 digits: ";
+
+    for (int i = 0; i < 4; i++)
+    {
+        
+        code[i] = readInt();
+        while (code[i] < 0 or code[i]>7)
+        {
+            cout << endl;
+            cout << "The digits you enter have to be between 0 and 7! Please try again: ";
+            code[i] = readInt();
+        }
+    }
+
+    cout << endl;
+}
+
+void enterCode(int* code, bool rep) {
+    enterNumbers(code);
+    if (rep == false) {
+        while (checkForRepeatingNumbers(code) == true) {
+            cout << "There must not be repeating digits! Please, try again: ";
+            enterNumbers(code);
+        }
+     }
+}
+
+int levelOne(int* code, bool rep) {
+
+ enterCode(code, rep);
+    
+ int guesses = 0, cows, bulls=0;
+ int userInput[4];
+
+ while (guesses < 13 and bulls<4) {
+     guesses++;
+     cout << "Guess #"<< guesses << endl;
+     enterCode(userInput, rep);
+    
+     bulls = checkForSameNumberAndPosition(code, userInput);
+     cows = checkOnlyForSameNumbers(code, userInput);
+
+     cout << endl;
+
+     cout << "Cows: " << cows << "     " << "Bulls: " << bulls << endl;
+     
+ }
+
+ cout << endl;
+
+ if (bulls == 4)
+     cout << "YAY! You guessed the code!" << endl;
+ else
+     cout << "Oh, no! You didn't guess the code!" << endl;
+ cout << endl;
+
+ int choice;
+
+ cout<<"Do you want to return to the main menu?"<<endl<<endl;
+ cout << "1. Yes" <<endl;
+ cout << "2. No" << endl<<endl;
+ cout << "Enter an option: ";
+
+ choice = readInt();
+ while (choice < 1 or choice>2) {
+     cout << endl;
+     cout << "The number you enter has to be either 1 or 2! Please try again: ";
+     choice = readInt();
+ }
+
+ return choice;
+}
+
+
 void outputResult(int* code, int* userGuess)
 {
     cout << "The count of guessed numbers which are at the same position as in the code is: " << checkForSameNumberAndPosition(code, userGuess) << endl;
     cout << "The count of guessed numbers which are not at the same position as in the code is: " << checkOnlyForSameNumbers(code, userGuess) << endl;
 }
 
-
-
-
-
-
 void displayMainMenu()
-{
-    cout << "___________________________________" << endl;
-    cout << "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|" << endl;
-    cout << "|   Welcome to our Enigma game!   |" << endl;
-    cout << "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|" << endl;
-    cout << "|                                 |" << endl;
-    cout << "|  1) Level 1: Player vs Player   |" << endl;
-    cout << "|  2) Level 2: Player vs Computer |" << endl;
-    cout << "|  3) Exit                        |" << endl;
-    cout << "|_________________________________|" << endl;
-    int choice;
-    cin >> choice;
-    switch (choice)
-    {
-    case 1:
-        displayLevelOneOptions();
-        break;
-    case 2:
-        displayLevelTwoOptions();
-        break;
-    case 3:
-        exit(0);
-        break;
-    default:
-        cout << "No such a option in the menu! Please try again!" << endl;
-        break;
+{ 
+   
+    int choice = 0;
+
+    while (choice != 3) {
+        cout << endl;
+        cout << " _________________________________" << endl;
+        cout << "|                                 |" << endl;
+        cout << "|         |  MAIN MENU  |         |" << endl;
+        cout << "|                                 |" << endl;
+        cout << "|  1) Level 1: Player vs Player   |" << endl;
+        cout << "|  2) Level 2: Player vs Computer |" << endl;
+        cout << "|  3) Exit                        |" << endl;
+        cout << "|_________________________________|" << endl;
+
+        cout << endl;
+
+
+        cout << "Enter an option: ";
+        choice = readInt();
+
+        while (choice > 3 or choice < 1)
+        {
+            cout << endl;
+            cout << "The number you enter has to be between 1 and 4! Please try again: ";
+            choice = readInt();
+        }
+
+        switch (choice)
+        {
+        case 1:
+            displayLevelOneOptions();
+            break;
+        case 2:
+            displayLevelTwoOptions();
+            break;
+        case 3:
+            exit(0);
+            break;
+        }
     }
 }
 
 void displayLevelOneOptions()
 {
+    cout << endl;
     cout << "_____________________________________________" << endl;
     cout << "|                  LEVEL 1                  |" << endl;
     cout << "|                                           |" << endl;
@@ -219,23 +309,39 @@ void displayLevelOneOptions()
     cout << "|  1) Task 1: Play with Unrepeatable digits |" << endl;
     cout << "|  2) Task 2: Play with Repeatable digits   |" << endl;
     cout << "|  3) Return to the Main Menu               |" << endl;
+    cout << "|  4) Exit                                  |" << endl;
     cout << "|___________________________________________|" << endl;
 
+    cout << endl;
+
     int choice;
-    cin >> choice;
+    cout << "Enter an option: ";
+    choice = readInt();
+
+    while (choice > 4 or choice < 1)
+    {
+        cout << endl;
+        cout << "The number you enter has to be between 1 and 4! Please try again: ";
+        choice = readInt();
+    }
+
+    int code[4];
+
     switch (choice)
     {
     case 1:
-        //WORK HERE
+        if (levelOne(code, false) == 2)
+            exit(0);
         break;
     case 2:
-        //WORK HERE
+        if (levelOne(code, true) == 2)
+            exit(0);
         break;
     case 3:
         displayMainMenu();
         break;
-    default:
-        cout << "No such a option in the menu! Please try again!" << endl;
+    case 4:
+        exit(0);
         break;
     }
 
@@ -243,6 +349,7 @@ void displayLevelOneOptions()
 
 void displayLevelTwoOptions()
 {
+    cout << endl;
     cout << "_____________________________________________" << endl;
     cout << "|                  LEVEL 2                  |" << endl;
     cout << "|                                           |" << endl;
@@ -251,10 +358,22 @@ void displayLevelTwoOptions()
     cout << "|  1) Task 1: Play with Unrepeatable digits |" << endl;
     cout << "|  2) Task 2: Play with Repeatable digits   |" << endl;
     cout << "|  3) Return to the Main Menu               |" << endl;
+    cout << "|  4) Exit                                  |" << endl;
     cout << "|___________________________________________|" << endl;
 
+    cout << endl;
+
     int choice;
-    cin >> choice;
+    cout << "Enter an option: ";
+    choice = readInt();
+
+    while (choice > 4 or choice < 1)
+    {
+        cout << endl;
+        cout << "The number you enter has to be between 1 and 4! Please try again: ";
+        choice = readInt();
+    }
+
     switch (choice)
     {
     case 1:
@@ -266,8 +385,8 @@ void displayLevelTwoOptions()
     case 3:
         displayMainMenu();
         break;
-    default:
-        cout << "No such a option in the menu! Please try again!" << endl;
+    case 4:
+        exit(0);
         break;
     }
 
