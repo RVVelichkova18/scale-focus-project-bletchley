@@ -134,16 +134,16 @@ void displayMainMenu()
     switch (choice)
     {
     case 1:
-        //playerVsPlayer(function);
+        displayLevelOneOptions();
         break;
     case 2:
-        //playerVsComputer(function);
+        displayLevelTwoOptions();
         break;
     case 3:
         exit(0);
         break;
     default:
-        cout << "There is not such a option!" << endl;
+        cout << "No such a option in the menu! Please try again!" << endl;
         break;
     }
 }
@@ -153,10 +153,30 @@ void displayLevelOneOptions()
     cout << "_____________________________________________" << endl;
     cout << "|                  LEVEL 1                  |" << endl;
     cout << "|                                           |" << endl;
-    cout << "|  1) Task 1: play with unrepeatable digits |" << endl;
-    cout << "|  2) Task 2: play with repeatable digits   |" << endl;
-    cout << "|  3) Exit                                  |" << endl;
+    cout << "|          |  Player vs Player  |           |" << endl;
+    cout << "|                                           |" << endl;
+    cout << "|  1) Task 1: Play with Unrepeatable digits |" << endl;
+    cout << "|  2) Task 2: Play with Repeatable digits   |" << endl;
+    cout << "|  3) Return to the Main Menu               |" << endl;
     cout << "|___________________________________________|" << endl;
+
+    int choice;
+    cin >> choice;
+    switch (choice)
+    {
+    case 1:
+        //WORK HERE
+        break;
+    case 2:
+        //WORK HERE
+        break;
+    case 3:
+        displayMainMenu();
+        break;
+    default:
+        cout << "No such a option in the menu! Please try again!" << endl;
+        break;
+    }
 
 }
 
@@ -166,10 +186,30 @@ void displayLevelTwoOptions()
     cout << "_____________________________________________" << endl;
     cout << "|                  LEVEL 2                  |" << endl;
     cout << "|                                           |" << endl;
-    cout << "|  1) Task 1: play with unrepeatable digits |" << endl;
-    cout << "|  2) Task 2: play with repeatable digits   |" << endl;
-    cout << "|  3) Exit                                  |" << endl;
+    cout << "|         |  Player vs Computer  |          |" << endl;
+    cout << "|                                           |" << endl;
+    cout << "|  1) Task 1: Play with Unrepeatable digits |" << endl;
+    cout << "|  2) Task 2: Play with Repeatable digits   |" << endl;
+    cout << "|  3) Return to the Main Menu               |" << endl;
     cout << "|___________________________________________|" << endl;
+
+    int choice;
+    cin >> choice;
+    switch (choice)
+    {
+    case 1:
+        //WORK HERE
+        break;
+    case 2:
+        //WORK HERE
+        break;
+    case 3:
+        displayMainMenu();
+        break;
+    default:
+        cout << "No such a option in the menu! Please try again!" << endl;
+        break;
+    }
 
 }
 
