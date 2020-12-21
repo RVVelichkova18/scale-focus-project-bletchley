@@ -19,48 +19,6 @@ void displayLevelOneOptions();
 void displayLevelTwoOptions();
 
 
-int main() {
-    srand(time(NULL));
-
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "   Welcome to our Enigma game!   " << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    displayMainMenu();
-
-     /*    int code[4] = { 1,2,2,2 };
-    int userGuess[4] = { 1,2,3,2 };
-
-    outputResult(code, userGuess);
-    
-    for (int i = 0; i < 4; i++)
-        cout << code[i] << " ";
-    cout << endl;
-  
-
-    for (int i = 0; i < 4; i++)
-        cout << userGuess[i] << " ";
-    cout << endl;
-    */
-
-    /*int num[4], num1[4];
-    randomNumberWithRepetition(num);
-    randomNumberNoRepetition(num1);
-
-    for (int i = 0; i < 4; i++)
-    {
-        cout << num[i] << " ";
-    }
-
-    cout << endl<<endl;
-
-    for (int i = 0; i < 4; i++)
-    {
-        cout << num1[i] << " ";
-    }*/
-}
-
-
-
 
 int readInt() {
 
@@ -172,6 +130,7 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
     return count;
 }
 
+
 void enterNumbers(int* code) {
     cout << endl;
     cout << "Enter 4 digits: ";
@@ -200,6 +159,7 @@ void enterCode(int* code, bool rep) {
         }
      }
 }
+
 
 int levelOne(int* code, bool rep) {
 
@@ -247,12 +207,69 @@ int levelOne(int* code, bool rep) {
  return choice;
 }
 
+int levelTwo(int* code, bool rep) {
 
-void outputResult(int* code, int* userGuess)
+    if (rep == true)
+        randomNumberWithRepetition(code);
+    else
+        randomNumberNoRepetition(code);
+
+    cout << endl;
+    cout << "The program has generated 4 random digits";
+    /*for (int i = 0; i < 4; i++) {
+        cout << code[i] << " ";
+    }*/
+    cout << endl<<endl;
+
+    int guesses = 0, cows, bulls = 0;
+    int userInput[4];
+
+    while (guesses < 13 and bulls < 4) {
+        guesses++;
+        cout << endl;
+        cout << "Guess #" << guesses << endl;
+        enterCode(userInput, rep);
+
+        bulls = checkForSameNumberAndPosition(code, userInput);
+        cows = checkOnlyForSameNumbers(code, userInput);
+
+        cout << endl;
+
+        cout << "Cows: " << cows << "     " << "Bulls: " << bulls << endl;
+        cout << endl;
+    }
+
+    cout << endl;
+
+    if (bulls == 4)
+        cout << "YAY! You guessed the code!" << endl;
+    else
+        cout << "Oh, no! You didn't guess the code!" << endl;
+    cout << endl;
+
+    int choice;
+
+    cout << "Do you want to return to the main menu?" << endl << endl;
+    cout << "1. Yes" << endl;
+    cout << "2. No" << endl << endl;
+    cout << "Enter an option: ";
+
+    choice = readInt();
+    while (choice < 1 or choice>2) {
+        cout << endl;
+        cout << "The number you enter has to be either 1 or 2! Please try again: ";
+        choice = readInt();
+    }
+
+    return choice;
+}
+
+/*void outputResult(int* code, int* userGuess)
 {
     cout << "The count of guessed numbers which are at the same position as in the code is: " << checkForSameNumberAndPosition(code, userGuess) << endl;
     cout << "The count of guessed numbers which are not at the same position as in the code is: " << checkOnlyForSameNumbers(code, userGuess) << endl;
-}
+}*/
+
 
 void displayMainMenu()
 { 
@@ -374,13 +391,17 @@ void displayLevelTwoOptions()
         choice = readInt();
     }
 
+    int code[4];
+
     switch (choice)
     {
     case 1:
-        //WORK HERE
+        if (levelTwo(code, false) == 2)
+            exit(0);
         break;
     case 2:
-        //WORK HERE
+        if (levelTwo(code, true) == 2)
+            exit(0);
         break;
     case 3:
         displayMainMenu();
@@ -390,4 +411,44 @@ void displayLevelTwoOptions()
         break;
     }
 
+}
+
+int main() {
+    srand(time(NULL));
+
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "   Welcome to our Enigma game!   " << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    displayMainMenu();
+
+    /*    int code[4] = { 1,2,2,2 };
+   int userGuess[4] = { 1,2,3,2 };
+
+   outputResult(code, userGuess);
+
+   for (int i = 0; i < 4; i++)
+       cout << code[i] << " ";
+   cout << endl;
+
+
+   for (int i = 0; i < 4; i++)
+       cout << userGuess[i] << " ";
+   cout << endl;
+   */
+
+   /*int num[4], num1[4];
+   randomNumberWithRepetition(num);
+   randomNumberNoRepetition(num1);
+
+   for (int i = 0; i < 4; i++)
+   {
+       cout << num[i] << " ";
+   }
+
+   cout << endl<<endl;
+
+   for (int i = 0; i < 4; i++)
+   {
+       cout << num1[i] << " ";
+   }*/
 }
