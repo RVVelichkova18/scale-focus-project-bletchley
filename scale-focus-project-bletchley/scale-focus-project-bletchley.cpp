@@ -12,14 +12,14 @@ int* randomNumberNoRepetition(int* num);
 
 int checkForSameNumberAndPosition(int* code, int* userGuess);
 int checkOnlyForSameNumbers(int* code, int* userGuess);
-void outputResult(int* code, int* userGuess);
+//void outputResult(int* code, int* userGuess);
 
 void displayMainMenu();
 void displayLevelOneOptions();
 void displayLevelTwoOptions();
 
 
-
+//Checks if the input is number
 int readInt() {
 
     int num;
@@ -36,12 +36,14 @@ int readInt() {
    
 }
 
+//Checks if the number is in the range from 0 to 7
 bool checkInRange(int num) {
     if (num >= 0 and num <= 7)
         return true;
     return false;
 }
 
+//Checks if there are repeating numbers 
 bool checkForRepeatingNumbers(int* userGuess) {
 
     for (int i = 1; i < 4; i++) {
@@ -56,10 +58,12 @@ bool checkForRepeatingNumbers(int* userGuess) {
 }
 
 
+//Returns random number from 0 to 7
 int randomInt() {
     return rand() % (7 - 0 + 1) + 0;
 }
 
+//Returns array with random numbers that can be repeated
 int* randomNumberWithRepetition(int* num) {
 
     for (int i = 0; i < 4; i++) {
@@ -69,6 +73,7 @@ int* randomNumberWithRepetition(int* num) {
     return num;
 }
 
+//Returns array with random numbers that can't be repeated
 int* randomNumberNoRepetition(int* num) {
 
     num[0] = randomInt();
@@ -101,6 +106,7 @@ int* randomNumberNoRepetition(int* num) {
 }
 
 
+//Checks if there are numbers that are same and they are on the same position
 int checkForSameNumberAndPosition(int* code, int* userGuess) {
     int count = 0;
 
@@ -114,6 +120,7 @@ int checkForSameNumberAndPosition(int* code, int* userGuess) {
     return count;
 }
 
+//Checks if trere are numbers that are same but they aren't on the same position
 int checkOnlyForSameNumbers(int* code, int* userGuess) {
     int count = 0;
 
@@ -130,7 +137,7 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
     return count;
 }
 
-
+//Makes you enter numbers until they fit the range
 void enterNumbers(int* code) {
     cout << endl;
     cout << "Enter 4 digits: ";
@@ -150,6 +157,7 @@ void enterNumbers(int* code) {
     cout << endl;
 }
 
+//Makes you enter numbers until they don't repeat
 void enterCode(int* code, bool rep) {
     enterNumbers(code);
     if (rep == false) {
@@ -161,6 +169,7 @@ void enterCode(int* code, bool rep) {
 }
 
 
+//Count the number of guesses when player play vs player
 int levelOne(int* code, bool rep) {
 
  enterCode(code, rep);
@@ -207,6 +216,7 @@ int levelOne(int* code, bool rep) {
  return choice;
 }
 
+//Count the number of guesses when player play vs computer
 int levelTwo(int* code, bool rep) {
 
     if (rep == true)
@@ -270,7 +280,7 @@ int levelTwo(int* code, bool rep) {
     cout << "The count of guessed numbers which are not at the same position as in the code is: " << checkOnlyForSameNumbers(code, userGuess) << endl;
 }*/
 
-
+//Shows the main menu
 void displayMainMenu()
 { 
    
@@ -315,6 +325,7 @@ void displayMainMenu()
     }
 }
 
+//Shows what are the options for level one
 void displayLevelOneOptions()
 {
     cout << endl;
@@ -364,6 +375,7 @@ void displayLevelOneOptions()
 
 }
 
+//Shows what are the options for level two
 void displayLevelTwoOptions()
 {
     cout << endl;
