@@ -405,12 +405,21 @@ void displayLevelTwoOptions()
 
 }
 
+void displayGameOverview()
+{
+    cout << "The Germans place a combination of 4 random numbers in the range between 0 and 7," << endl;
+    cout << "indicating the coordinates of their battleships.The code breaker should guess the" << endl;
+    cout << "number within 13 tries using the board.The codebreaker places their guesses. The " << endl;
+    cout << "Germans should give a feedback whether just a number is guessed or a number and is" << endl;
+    cout << "on a correct place. If the code breaker reach the 13th try and hasn’t guessed the " << endl;
+    cout << "combination the game is over and The Germans win." << endl;
+}
 int main() {
     srand(time(NULL));
 
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "   Welcome to our Enigma game!   " << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << "|   Welcome to our Enigma game!  |" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     displayMainMenu();
 
     /*    int code[4] = { 1,2,2,2 };
