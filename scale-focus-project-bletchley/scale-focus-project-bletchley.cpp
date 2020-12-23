@@ -151,7 +151,7 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
 //Makes you enter numbers until they fit the range
 void enterNumbers(int* code) {
     cout << endl;
-    cout << "Player 1 (Germans) Enter 4 digits: ";
+    cout << "Enter 4 digits: ";
 
     for (int i = 0; i < 4; i++)
     {
@@ -175,7 +175,9 @@ void enterNumbers(int* code) {
 
 //Makes you enter numbers until they don't repeat
 void enterCode(int* code, bool rep) {
+  
     enterNumbers(code);
+
     if (rep == false) {
         while (checkForRepeatingNumbers(code) == true) {
             cout << "There must not be repeating digits! Please, try again: ";
@@ -191,6 +193,7 @@ void processGuesses(int* code, bool rep){
 
     while (guesses < 13 and bulls < 4) {
         guesses++;
+        cout << "PLAYER 2 (THE ALLIANCE)" <<endl<< endl;
         cout << "Guess #" << guesses << endl;
         enterCode(userInput, rep);
 
@@ -235,8 +238,10 @@ int chooseOption() {
 
 //Count the number of guesses when player play vs player
 int levelOne(int* code, bool rep) {
-
+    cout << "PLAYER 1(THE GERMANS)" << endl;
  enterCode(code, rep);
+
+ cout << endl;
     
  processGuesses(code, rep);
 
