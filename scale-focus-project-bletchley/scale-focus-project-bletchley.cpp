@@ -169,35 +169,39 @@ void enterCode(int* code, bool rep) {
 }
 
 
+void processGuesses(int* code, bool rep){
+    int guesses = 0, cows, bulls = 0;
+    int userInput[4];
+
+    while (guesses < 13 and bulls < 4) {
+        guesses++;
+        cout << "Guess #" << guesses << endl;
+        enterCode(userInput, rep);
+
+        bulls = checkForSameNumberAndPosition(code, userInput);
+        cows = checkOnlyForSameNumbers(code, userInput);
+
+        cout << endl;
+
+        cout << "Cows: " << cows << "     " << "Bulls: " << bulls << endl;
+
+    }
+
+    cout << endl;
+
+    if (bulls == 4)
+        cout << "YAY! You guessed the code!" << endl;
+    else
+        cout << "Oh, no! You didn't guess the code!" << endl;
+    cout << endl;
+}
+
 //Count the number of guesses when player play vs player
 int levelOne(int* code, bool rep) {
 
  enterCode(code, rep);
     
- int guesses = 0, cows, bulls=0;
- int userInput[4];
-
- while (guesses < 13 and bulls<4) {
-     guesses++;
-     cout << "Guess #"<< guesses << endl;
-     enterCode(userInput, rep);
-    
-     bulls = checkForSameNumberAndPosition(code, userInput);
-     cows = checkOnlyForSameNumbers(code, userInput);
-
-     cout << endl;
-
-     cout << "Cows: " << cows << "     " << "Bulls: " << bulls << endl;
-     
- }
-
- cout << endl;
-
- if (bulls == 4)
-     cout << "YAY! You guessed the code!" << endl;
- else
-     cout << "Oh, no! You didn't guess the code!" << endl;
- cout << endl;
+ processGuesses(code, rep);
 
  int choice;
 
@@ -231,31 +235,7 @@ int levelTwo(int* code, bool rep) {
     }*/
     cout << endl<<endl;
 
-    int guesses = 0, cows, bulls = 0;
-    int userInput[4];
-
-    while (guesses < 13 and bulls < 4) {
-        guesses++;
-        cout << endl;
-        cout << "Guess #" << guesses << endl;
-        enterCode(userInput, rep);
-
-        bulls = checkForSameNumberAndPosition(code, userInput);
-        cows = checkOnlyForSameNumbers(code, userInput);
-
-        cout << endl;
-
-        cout << "Cows: " << cows << "     " << "Bulls: " << bulls << endl;
-        cout << endl;
-    }
-
-    cout << endl;
-
-    if (bulls == 4)
-        cout << "YAY! You guessed the code!" << endl;
-    else
-        cout << "Oh, no! You didn't guess the code!" << endl;
-    cout << endl;
+    processGuesses(code, rep);
 
     int choice;
 
