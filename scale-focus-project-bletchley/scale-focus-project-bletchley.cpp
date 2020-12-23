@@ -196,46 +196,7 @@ void processGuesses(int* code, bool rep){
     cout << endl;
 }
 
-//Count the number of guesses when player play vs player
-int levelOne(int* code, bool rep) {
-
- enterCode(code, rep);
-    
- processGuesses(code, rep);
-
- int choice;
-
- cout<<"Do you want to return to the main menu?"<<endl<<endl;
- cout << "1. Yes" <<endl;
- cout << "2. No" << endl<<endl;
- cout << "Enter an option: ";
-
- choice = readInt();
- while (choice < 1 or choice>2) {
-     cout << endl;
-     cout << "The number you enter has to be either 1 or 2! Please try again: ";
-     choice = readInt();
- }
-
- return choice;
-}
-
-//Count the number of guesses when player play vs computer
-int levelTwo(int* code, bool rep) {
-
-    if (rep == true)
-        randomNumberWithRepetition(code);
-    else
-        randomNumberNoRepetition(code);
-
-    cout << endl;
-    cout << "The program has generated 4 random digits";
-    /*for (int i = 0; i < 4; i++) {
-        cout << code[i] << " ";
-    }*/
-    cout << endl<<endl;
-
-    processGuesses(code, rep);
+int chooseOption() {
 
     int choice;
 
@@ -252,6 +213,36 @@ int levelTwo(int* code, bool rep) {
     }
 
     return choice;
+}
+
+//Count the number of guesses when player play vs player
+int levelOne(int* code, bool rep) {
+
+ enterCode(code, rep);
+    
+ processGuesses(code, rep);
+
+ return chooseOption();
+}
+
+//Count the number of guesses when player play vs computer
+int levelTwo(int* code, bool rep) {
+
+    if (rep == true)
+        randomNumberWithRepetition(code);
+    else
+        randomNumberNoRepetition(code);
+
+    cout << endl;
+    cout << "The program has generated 4 random digits";
+    for (int i = 0; i < 4; i++) {
+        cout << code[i] << " ";
+    }
+    cout << endl<<endl;
+
+    processGuesses(code, rep);
+
+    return chooseOption();
 }
 
 /*void outputResult(int* code, int* userGuess)
