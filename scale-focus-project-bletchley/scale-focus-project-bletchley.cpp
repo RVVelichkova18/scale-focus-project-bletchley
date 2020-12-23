@@ -2,6 +2,7 @@
 #include <time.h>   
 using namespace std;
 
+
 int readInt();
 bool checkInRange(int* code);
 bool checkForRepeatingNumbers(int* userGuess);
@@ -18,7 +19,13 @@ void displayMainMenu();
 void displayLevelOneOptions();
 void displayLevelTwoOptions();
 
-
+void spaces(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << " ";
+    }
+}
 //Checks if the input is number
 int readInt() {
 
@@ -144,7 +151,7 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
 //Makes you enter numbers until they fit the range
 void enterNumbers(int* code) {
     cout << endl;
-    cout << "Enter 4 digits: ";
+    cout << "Player 1 (Germans) Enter 4 digits: ";
 
     for (int i = 0; i < 4; i++)
     {
@@ -209,9 +216,9 @@ int chooseOption() {
 
     int choice;
 
-    cout << "Do you want to return to the main menu?" << endl << endl;
-    cout << "1. Yes" << endl;
-    cout << "2. No" << endl << endl;
+    
+    cout << "1) Return to the Main Menu" << endl;
+    cout << "2) Exit" << endl << endl;
     cout << "Enter an option: ";
 
     choice = readInt();
@@ -270,14 +277,14 @@ void displayMainMenu()
 
     while (choice != 3) {
         cout << endl;
-        cout << " _________________________________" << endl;
-        cout << "|                                 |" << endl;
-        cout << "|         |  MAIN MENU  |         |" << endl;
-        cout << "|                                 |" << endl;
-        cout << "|  1) Level 1: Player vs Player   |" << endl;
-        cout << "|  2) Level 2: Player vs Computer |" << endl;
-        cout << "|  3) Exit                        |" << endl;
-        cout << "|_________________________________|" << endl;
+        spaces(42); cout << " _________________________________" << endl;
+        spaces(42); cout << "|                                 |" << endl;
+        spaces(42); cout << "|         |  MAIN MENU  |         |" << endl;
+        spaces(42); cout << "|                                 |" << endl;
+        spaces(42); cout << "|  1) Level 1: Player vs Player   |" << endl;
+        spaces(42); cout << "|  2) Level 2: Player vs Computer |" << endl;
+        spaces(42); cout << "|  3) Exit                        |" << endl;
+        spaces(42); cout << "|_________________________________|" << endl;
 
         cout << endl;
 
@@ -314,16 +321,16 @@ void displayMainMenu()
 void displayLevelOneOptions()
 {
     cout << endl;
-    cout << "_____________________________________________" << endl;
-    cout << "|                  LEVEL 1                  |" << endl;
-    cout << "|                                           |" << endl;
-    cout << "|          |  Player vs Player  |           |" << endl;
-    cout << "|                                           |" << endl;
-    cout << "|  1) Task 1: Play with Unrepeatable digits |" << endl;
-    cout << "|  2) Task 2: Play with Repeatable digits   |" << endl;
-    cout << "|  3) Return to the Main Menu               |" << endl;
-    cout << "|  4) Exit                                  |" << endl;
-    cout << "|___________________________________________|" << endl;
+    spaces(37); cout << "_____________________________________________" << endl;
+    spaces(37); cout << "|                  LEVEL 1                  |" << endl;
+    spaces(37); cout << "|                                           |" << endl;
+    spaces(37); cout << "|          |  Player vs Player  |           |" << endl;
+    spaces(37); cout << "|                                           |" << endl;
+    spaces(37); cout << "|  1) Task 1: Play with Unrepeatable digits |" << endl;
+    spaces(37); cout << "|  2) Task 2: Play with Repeatable digits   |" << endl;
+    spaces(37); cout << "|  3) Return to the Main Menu               |" << endl;
+    spaces(37); cout << "|  4) Exit                                  |" << endl;
+    spaces(37); cout << "|___________________________________________|" << endl;
 
     cout << endl;
 
@@ -366,16 +373,16 @@ void displayLevelOneOptions()
 void displayLevelTwoOptions()
 {
     cout << endl;
-    cout << "_____________________________________________" << endl;
-    cout << "|                  LEVEL 2                  |" << endl;
-    cout << "|                                           |" << endl;
-    cout << "|         |  Player vs Computer  |          |" << endl;
-    cout << "|                                           |" << endl;
-    cout << "|  1) Task 1: Play with Unrepeatable digits |" << endl;
-    cout << "|  2) Task 2: Play with Repeatable digits   |" << endl;
-    cout << "|  3) Return to the Main Menu               |" << endl;
-    cout << "|  4) Exit                                  |" << endl;
-    cout << "|___________________________________________|" << endl;
+    spaces(37); cout << "_____________________________________________" << endl;
+    spaces(37); cout << "|                  LEVEL 2                  |" << endl;
+    spaces(37); cout << "|                                           |" << endl;
+    spaces(37); cout << "|         |  Player vs Computer  |          |" << endl;
+    spaces(37); cout << "|                                           |" << endl;
+    spaces(37); cout << "|  1) Task 1: Play with Unrepeatable digits |" << endl;
+    spaces(37); cout << "|  2) Task 2: Play with Repeatable digits   |" << endl;
+    spaces(37); cout << "|  3) Return to the Main Menu               |" << endl;
+    spaces(37); cout << "|  4) Exit                                  |" << endl;
+    spaces(37); cout << "|___________________________________________|" << endl;
 
     cout << endl;
 
@@ -423,12 +430,14 @@ void displayGameOverview()
     cout << "on a correct place. If the code breaker reach the 13th try and hasn’t guessed the " << endl;
     cout << "combination the game is over and The Germans win." << endl;
 }
+
+
 int main() {
     srand(time(NULL));
 
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    cout << "|   Welcome to our Enigma game!  |" << endl;
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    spaces(42); cout << "|   Welcome to our Enigma game!  |" << endl;
+    spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     displayMainMenu();
 
     /*    int code[4] = { 1,2,2,2 };
