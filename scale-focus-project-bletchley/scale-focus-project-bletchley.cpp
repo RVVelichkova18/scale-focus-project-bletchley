@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <conio.h>
 #include <time.h>   
 using namespace std;
 
@@ -149,8 +151,6 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
 
 //Makes you enter numbers until they fit the range
 void enterNumbers(int* code) {
-    cout << endl;
-    cout << "Enter 4 digits: ";
 
     for (int i = 0; i < 4; i++)
     {
@@ -173,7 +173,7 @@ void enterNumbers(int* code) {
 }
 
 //Makes you enter numbers until they don't repeat
-void enterCode(int* code, bool rep) {
+void enterGuess(int* code, bool rep) {
   
     enterNumbers(code);
 
@@ -185,7 +185,57 @@ void enterCode(int* code, bool rep) {
      }
 }
 
+void enterHidden(int* code) {
 
+    string strCode = "";
+    int digit;
+
+    
+
+    while (strCode.size() < 4) {
+
+        digit = _getch();
+        cout << '*';
+
+        while (digit < 48 or digit>57) {
+            cout << endl;
+            strCode = "";
+            cout << "You have to enter a digit! Try again: ";
+            digit = _getch();
+            cout << '*';
+        }
+
+        while (digit > 55) {
+            cout << endl;
+            strCode = "";
+            cout << "You have to enter a digit between 1 and 7! Try again: ";
+            digit = _getch();
+            cout << '*';
+        }
+
+        strCode.push_back(digit);
+
+        cout << " ";
+
+    }
+
+    cout << endl;
+
+    for (int i = 0; i < 4; i++)
+    {
+        code[i] = strCode[i] - 48;
+    }
+}
+
+void enterHiddenNoRep(int* code) {
+
+    enterHidden(code);
+
+    while (checkForRepeatingNumbers(code) == true) {
+        cout << "There must not be repeating digits! Please, try again: ";
+        enterHidden(code);
+    }
+}
 
 void processGuesses(int* code, bool rep){
     int guesses = 0, cows, bulls = 0;
@@ -200,7 +250,12 @@ void processGuesses(int* code, bool rep){
         cout << " ----------"<<endl;
         cout << "| GUESS #" << guesses <<" |" << endl;
         cout << " ----------" << endl;
-        enterCode(userInput, rep);
+
+        cout << endl;
+
+        cout << "Enter 4 digits: ";
+
+        enterGuess(userInput, rep);
 
         bulls = checkForSameNumberAndPosition(code, userInput);
         cows = checkOnlyForSameNumbers(code, userInput);
@@ -258,7 +313,13 @@ int chooseOption() {
 int levelOne(int* code, bool rep) {
     spaces(50); 
     cout << "PLAYER 1(THE GERMANS)" << endl;
- enterCode(code, rep);
+
+    cout << "Enter 4 digits: ";
+
+    if (rep == true)
+        enterHidden(code);
+    else
+        enterHiddenNoRep(code);
 
  cout << endl;
     
