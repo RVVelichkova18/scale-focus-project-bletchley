@@ -3,7 +3,7 @@
 using namespace std;
 
 int readInt();
-bool checkInRange(int num);
+bool checkInRange(int* code);
 bool checkForRepeatingNumbers(int* userGuess);
 
 int randomInt();
@@ -36,11 +36,15 @@ int readInt() {
    
 }
 
-//Checks if the number is in the range from 0 to 7
-bool checkInRange(int num) {
-    if (num >= 0 and num <= 7)
-        return true;
-    return false;
+//Checks if the digits are from 0 to 7
+bool checkInRange(int* code) {
+    for (int i = 0; i < 4; i++) {
+        if (code[i] < 0)
+            return false;
+        else if (code[i] > 7)
+            return false;
+    }
+    return true;
 }
 
 //Checks if there are repeating numbers 
@@ -146,10 +150,15 @@ void enterNumbers(int* code) {
     {
         
         code[i] = readInt();
-        while (code[i] < 0 or code[i]>7)
+    }
+
+    while (checkInRange(code) == false)
+    {
+        cout << endl;
+        cout << "The digits you enter have to be between 0 and 7! Please try again: ";
+        for (int i = 0; i < 4; i++)
         {
-            cout << endl;
-            cout << "The digits you enter have to be between 0 and 7! Please try again: ";
+
             code[i] = readInt();
         }
     }
