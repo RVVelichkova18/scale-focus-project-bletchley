@@ -2,7 +2,6 @@
 #include <time.h>   
 using namespace std;
 
-
 int readInt();
 bool checkInRange(int* code);
 bool checkForRepeatingNumbers(int* userGuess);
@@ -18,14 +17,10 @@ int checkOnlyForSameNumbers(int* code, int* userGuess);
 void displayMainMenu();
 void displayLevelOneOptions();
 void displayLevelTwoOptions();
+int displayGameOverview();
+void spaces(int n);
 
-void spaces(int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        cout << " ";
-    }
-}
+
 //Checks if the input is number
 int readInt() {
 
@@ -67,6 +62,7 @@ bool checkForRepeatingNumbers(int* userGuess) {
 
     return false;
 }
+
 
 
 //Returns random number from 0 to 7
@@ -117,6 +113,7 @@ int* randomNumberNoRepetition(int* num) {
 }
 
 
+
 //Checks if there are numbers that are same and they are on the same position
 int checkForSameNumberAndPosition(int* code, int* userGuess) {
     int count = 0;
@@ -147,6 +144,8 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
 
     return count;
 }
+
+
 
 //Makes you enter numbers until they fit the range
 void enterNumbers(int* code) {
@@ -187,31 +186,49 @@ void enterCode(int* code, bool rep) {
 }
 
 
+
 void processGuesses(int* code, bool rep){
     int guesses = 0, cows, bulls = 0;
     int userInput[4];
 
+    spaces(49);
+    cout << "PLAYER 2 (THE ALLIANCE)" << endl << endl;
+
     while (guesses < 13 and bulls < 4) {
         guesses++;
-        cout << "PLAYER 2 (THE ALLIANCE)" <<endl<< endl;
-        cout << "Guess #" << guesses << endl;
+        
+        cout << " ----------"<<endl;
+        cout << "| GUESS #" << guesses <<" |" << endl;
+        cout << " ----------" << endl;
         enterCode(userInput, rep);
 
         bulls = checkForSameNumberAndPosition(code, userInput);
         cows = checkOnlyForSameNumbers(code, userInput);
 
-        cout << endl;
+        
 
-        cout << "Cows: " << cows << "     " << "Bulls: " << bulls << endl;
+        spaces(32);
+
+        cout << "Guessed numbers: " << cows << "     " << "Guessed numbers and positions: " << bulls << endl << endl << endl;
 
     }
 
     cout << endl;
 
     if (bulls == 4)
-        cout << "YAY! You guessed the code!" << endl;
-    else
-        cout << "Oh, no! You didn't guess the code!" << endl;
+    {
+        spaces(24);
+        cout << "CONGRATULATIONS! You cracked the code! Now we know the coordinates of" << endl;
+        spaces(18);
+        cout<<"the German battleships and will be able to destroy them once and for all! Good job!" << endl << endl;
+    }
+    else 
+    {
+        spaces(24);
+        cout << "OH NO! You didn't crack the code! We still know nothing about the German " << endl;
+        spaces(14);
+        cout << "battleships' coordinates. But this war isn't over yet... we still have a chance of saving the world." << endl << endl;
+    }
     cout << endl;
 }
 
@@ -219,8 +236,9 @@ int chooseOption() {
 
     int choice;
 
-    
+    spaces(48);
     cout << "1) Return to the Main Menu" << endl;
+    spaces(48);
     cout << "2) Exit" << endl << endl;
     cout << "Enter an option: ";
 
@@ -238,6 +256,7 @@ int chooseOption() {
 
 //Count the number of guesses when player play vs player
 int levelOne(int* code, bool rep) {
+    spaces(50); 
     cout << "PLAYER 1(THE GERMANS)" << endl;
  enterCode(code, rep);
 
@@ -250,6 +269,9 @@ int levelOne(int* code, bool rep) {
 
 //Count the number of guesses when player play vs computer
 int levelTwo(int* code, bool rep) {
+
+    spaces(50);
+    cout << "PLAYER 1(THE GERMANS)" << endl;
 
     if (rep == true)
         randomNumberWithRepetition(code);
@@ -274,6 +296,8 @@ int levelTwo(int* code, bool rep) {
     cout << "The count of guessed numbers which are not at the same position as in the code is: " << checkOnlyForSameNumbers(code, userGuess) << endl;
 }*/
 
+
+
 //Shows the main menu
 void displayMainMenu()
 { 
@@ -288,7 +312,8 @@ void displayMainMenu()
         spaces(42); cout << "|                                 |" << endl;
         spaces(42); cout << "|  1) Level 1: Player vs Player   |" << endl;
         spaces(42); cout << "|  2) Level 2: Player vs Computer |" << endl;
-        spaces(42); cout << "|  3) Exit                        |" << endl;
+        spaces(42); cout << "|  3) Show game description       |" << endl;
+        spaces(42); cout << "|  4) Exit                        |" << endl;
         spaces(42); cout << "|_________________________________|" << endl;
 
         cout << endl;
@@ -297,7 +322,7 @@ void displayMainMenu()
         cout << "Enter an option: ";
         choice = readInt();
 
-        while (choice > 3 or choice < 1)
+        while (choice > 4 or choice < 1)
         {
             cout << endl;
             cout << "The number you enter has to be between 1 and 4! Please try again: ";
@@ -316,6 +341,9 @@ void displayMainMenu()
             displayLevelTwoOptions();
             break;
         case 3:
+            displayGameOverview();
+            break;
+        case 4:
             exit(0);
             break;
         }
@@ -325,8 +353,8 @@ void displayMainMenu()
 //Shows what are the options for level one
 void displayLevelOneOptions()
 {
-    cout << endl;
-    spaces(37); cout << "_____________________________________________" << endl;
+    spaces(37); cout << " ___________________________________________" << endl;
+    spaces(37); cout << "|                                           |" << endl;
     spaces(37); cout << "|                  LEVEL 1                  |" << endl;
     spaces(37); cout << "|                                           |" << endl;
     spaces(37); cout << "|          |  Player vs Player  |           |" << endl;
@@ -377,8 +405,8 @@ void displayLevelOneOptions()
 //Shows what are the options for level two
 void displayLevelTwoOptions()
 {
-    cout << endl;
-    spaces(37); cout << "_____________________________________________" << endl;
+    spaces(37); cout << " ___________________________________________" << endl;
+    spaces(37); cout << "|                                           |" << endl;
     spaces(37); cout << "|                  LEVEL 2                  |" << endl;
     spaces(37); cout << "|                                           |" << endl;
     spaces(37); cout << "|         |  Player vs Computer  |          |" << endl;
@@ -426,14 +454,24 @@ void displayLevelTwoOptions()
 
 }
 
-void displayGameOverview()
+int displayGameOverview()
 {
-    cout << "The Germans place a combination of 4 random numbers in the range between 0 and 7," << endl;
-    cout << "indicating the coordinates of their battleships.The code breaker should guess the" << endl;
-    cout << "number within 13 tries using the board.The codebreaker places their guesses. The " << endl;
-    cout << "Germans should give a feedback whether just a number is guessed or a number and is" << endl;
-    cout << "on a correct place. If the code breaker reach the 13th try and hasn’t guessed the " << endl;
-    cout << "combination the game is over and The Germans win." << endl;
+    spaces(25); cout << "The Germans place a combination of 4 random digits in the range between 0 and 7," << endl;
+    spaces(25); cout << "indicating the coordinates of their battleships. The code breaker should guess the" << endl;
+    spaces(25); cout << "number within 13 tries using the board. The codebreaker places their guesses. The " << endl;
+    spaces(25); cout << "Germans should give a feedback whether only a number is guessed or a number and its" << endl;
+    spaces(25); cout << "position. If the code breaker reaches the 13th try and hasn't guessed the " << endl;
+    spaces(25); cout << "combination the game is over and The Germans win." << endl << endl;
+
+    return chooseOption();
+}
+
+void spaces(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << " ";
+    }
 }
 
 
