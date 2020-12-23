@@ -212,6 +212,8 @@ int chooseOption() {
         choice = readInt();
     }
 
+    system("cls");
+
     return choice;
 }
 
@@ -281,6 +283,9 @@ void displayMainMenu()
             choice = readInt();
         }
 
+
+        system("cls");
+
         switch (choice)
         {
         case 1:
@@ -325,6 +330,8 @@ void displayLevelOneOptions()
     }
 
     int code[4];
+
+    system("cls");
 
     switch (choice)
     {
@@ -375,6 +382,8 @@ void displayLevelTwoOptions()
     }
 
     int code[4];
+
+    system("cls");
 
     switch (choice)
     {
