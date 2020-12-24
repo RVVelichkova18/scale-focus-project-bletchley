@@ -306,6 +306,7 @@ int chooseOption() {
     cout << "Enter an option: ";
 
     choice = readInt();
+
     while (choice < 1 or choice>2) {
         cout << endl;
         cout << RED << "The number you enter has to be either 1 or 2! Please try again: " << RESET;
@@ -366,7 +367,7 @@ void displayMainMenu()
 
     int choice = 0;
 
-    while (choice != 3) {
+    while (choice != 4) {
         cout << endl;
         spaces(42); cout << " _________________________________" << endl;
         spaces(42); cout << "|                                 |" << endl;
@@ -403,7 +404,8 @@ void displayMainMenu()
             displayLevelTwoOptions();
             break;
         case 3:
-            displayGameOverview();
+            if (displayGameOverview() == 2)
+                exit(0);
             break;
         case 4:
             exit(0);
@@ -519,14 +521,14 @@ void displayLevelTwoOptions()
 int displayGameOverview()
 {
     cout << endl;
-    spaces(27); cout << "The Germans place a combination of 4 random digits in the range between 0 and 7," << endl;
-    spaces(25); cout << "indicating the coordinates of their battleships. The code breaker should guess the" << endl;
-    spaces(25); cout << "number within 13 tries using the board. The codebreaker places their guesses. The " << endl;
+    spaces(25); cout << "  The Germans place a combination of 4 random digits in the range between 0 and 7," << endl;
+    spaces(25); cout << " indicating the coordinates of their battleships. The code breaker should guess the" << endl;
+    spaces(25); cout << " number within 13 tries using the board. The codebreaker places their guesses. The" << endl;
     spaces(25); cout << "Germans should give a feedback whether only a number is guessed or a number and its" << endl;
-    spaces(25); cout << "position. If the code breaker reaches the 13th try and hasn't guessed the " << endl;
-    spaces(25); cout << "combination the game is over and The Germans win." << endl << endl;
-    spaces(25); cout << WHITE << "Tip 1 - Input the numbers with one space between them while guessing!" << RESET << endl;
-    spaces(25); cout << WHITE << "Tip 2 - If u are playing the Germans input the number without space between them!" << RESET << endl << endl;
+    spaces(25); cout << "     position. If the code breaker reaches the 13th try and hasn't guessed the" << endl;
+    spaces(25); cout << "                combination the game is over and The Germans win." << endl << endl;
+    spaces(25); cout << WHITE << "Tip 1: Input the digits with one space between each one while guessing!" << RESET << endl;
+    spaces(25); cout << WHITE << "Tip 2: If you are playing as the Germans, input the digits without spaces between them!" << RESET << endl << endl;
 
     return chooseOption();
 }
@@ -538,6 +540,7 @@ void spaces(int n)
         cout << " ";
     }
 }
+
 void displayGreeting()
 {
     spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
@@ -551,5 +554,4 @@ int main() {
 
     displayGreeting();
     displayMainMenu();
-
 }
