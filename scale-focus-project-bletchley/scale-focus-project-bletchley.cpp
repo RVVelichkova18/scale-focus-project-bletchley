@@ -41,7 +41,7 @@ int readInt() {
         cin.clear();
         cin.ignore(INT_MAX, '\n');
         cout << endl;
-        cout << RED << "You have to enter a number! Please try again: " << RESET << endl;;
+        cout << RED << "You have to enter a digit! Please, try again: " << RESET;
     }
 
     return num;
@@ -169,7 +169,7 @@ void enterNumbers(int* code) {
     while (checkInRange(code) == false)
     {
         cout << endl;
-        cout << RED << "The digits you enter have to be between 0 and 7! Please try again: " << RESET;
+        cout << RED << "You have to enter a digit between 0 and 7! Please, try again: " << RESET;
         for (int i = 0; i < 4; i++)
         {
 
@@ -208,7 +208,7 @@ void enterHidden(int* code) {
         while (digit < 48 or digit>57) {
             cout << endl;
             strCode = "";
-            cout << RED << "You have to enter a digit! Try again: " << RESET;
+            cout << RED << "You have to enter a digit! Please, try again: " << RESET;
             digit = _getch();
             cout << YELLOW << '*' << RESET;
         }
@@ -216,7 +216,7 @@ void enterHidden(int* code) {
         while (digit > 55) {
             cout << endl;
             strCode = "";
-            cout << RED << "You have to enter a digit between 1 and 7! Try again: " << RESET;
+            cout << RED << "You have to enter a digit between 0 and 7! Please, try again: " << RESET;
             digit = _getch();
             cout << YELLOW << '*' << RESET;
         }
@@ -283,7 +283,7 @@ void processGuesses(int* code, bool rep) {
         spaces(24);
         cout << GREEN << "CONGRATULATIONS! You cracked the code! Now we know the coordinates of" << endl;
         spaces(18);
-        cout << "the German battleships and will be able to destroy them once and for all! Good job!" << RESET << endl << endl;
+        cout << "the German battleships and will be able to destroy them once and for all! Great job!" << RESET << endl << endl;
     }
     else
     {
@@ -309,7 +309,7 @@ int chooseOption() {
 
     while (choice < 1 or choice>2) {
         cout << endl;
-        cout << RED << "The number you enter has to be either 1 or 2! Please try again: " << RESET;
+        cout << RED << "The number you enter has to be either 1 or 2! Please, try again: " << RESET;
         choice = readInt();
     }
 
@@ -388,7 +388,7 @@ void displayMainMenu()
         while (choice > 4 or choice < 1)
         {
             cout << endl;
-            cout << RED << "The number you enter has to be between 1 and 4! Please try again: " << RESET;
+            cout << RED << "The number you enter has to be between 1 and 4! Please, try again: " << RESET;
             choice = readInt();
         }
 
@@ -438,7 +438,7 @@ void displayLevelOneOptions()
     while (choice > 4 or choice < 1)
     {
         cout << endl;
-        cout << RED << "The number you enter has to be between 1 and 4! Please try again: " << RESET;
+        cout << RED << "The number you enter has to be between 1 and 4! Please, try again: " << RESET;
         choice = readInt();
     }
 
@@ -490,7 +490,7 @@ void displayLevelTwoOptions()
     while (choice > 4 or choice < 1)
     {
         cout << endl;
-        cout << RED << "The number you enter has to be between 1 and 4! Please try again: " << RESET;
+        cout << RED << "The number you enter has to be between 1 and 4! Please, try again: " << RESET;
         choice = readInt();
     }
 
