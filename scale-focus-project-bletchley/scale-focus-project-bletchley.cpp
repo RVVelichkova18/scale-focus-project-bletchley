@@ -158,39 +158,54 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
 
 
 //Makes you enter numbers until they fit the range
-void enterNumbers(int* code) {
+bool enterNumbers(int* code) {
+
+    bool quit=false;
 
     for (int i = 0; i < 4; i++)
     {
-
         code[i] = readInt();
+
+        if (code[i] == 10)
+        {
+            quit=true;
+            break;
+        }
     }
 
-    while (checkInRange(code) == false)
-    {
-        cout << endl;
-        cout << RED << "You have to enter a digit between 0 and 7! Please, try again: " << RESET;
-        for (int i = 0; i < 4; i++)
+    if (quit == false) {
+        while (checkInRange(code) == false)
         {
+            cout << endl;
+            cout << RED << "You have to enter a digit between 0 and 7! Please, try again: " << RESET;
+            for (int i = 0; i < 4; i++)
+            {
 
-            code[i] = readInt();
+                code[i] = readInt();
+            }
         }
     }
 
     cout << endl;
+
+    return quit;
 }
 
 //Makes you enter numbers until they don't repeat
-void enterGuess(int* code, bool rep) {
+bool enterGuess(int* code, bool rep) {
 
-    enterNumbers(code);
+    bool quit = enterNumbers(code);
 
-    if (rep == false) {
-        while (checkForRepeatingNumbers(code) == true) {
-            cout << RED << "There must not be repeating digits! Please, try again: " << RESET;
-            enterNumbers(code);
+    if (quit == false) {
+        if (rep == false) {
+            while (checkForRepeatingNumbers(code) == true) {
+                cout << RED << "There must not be repeating digits! Please, try again: " << RESET;
+                enterNumbers(code);
+            }
         }
     }
+
+    return quit;
 }
 
 void enterHidden(int* code) {
@@ -208,7 +223,7 @@ void enterHidden(int* code) {
         while (digit < 48 or digit>57) {
             cout << endl;
             strCode = "";
-            cout << RED << "You have to enter a digit! Please, try again: " << RESET;
+            cout <<endl<< RED << "You have to enter a digit! Please, try again: " << RESET;
             digit = _getch();
             cout << YELLOW << '*' << RESET;
         }
@@ -216,7 +231,7 @@ void enterHidden(int* code) {
         while (digit > 55) {
             cout << endl;
             strCode = "";
-            cout << RED << "You have to enter a digit between 0 and 7! Please, try again: " << RESET;
+            cout <<endl<< RED << "You have to enter a digit between 0 and 7! Please, try again: " << RESET;
             digit = _getch();
             cout << YELLOW << '*' << RESET;
         }
@@ -240,7 +255,7 @@ void enterHiddenNoRep(int* code) {
     enterHidden(code);
 
     while (checkForRepeatingNumbers(code) == true) {
-        cout << RED << "There must not be repeating digits! Please, try again: " << RESET;
+        cout <<endl<< RED << "There must not be repeating digits! Please, try again: " << RESET;
         enterHidden(code);
     }
 }
@@ -248,6 +263,7 @@ void enterHiddenNoRep(int* code) {
 void processGuesses(int* code, bool rep) {
     int guesses = 0, cows, bulls = 0;
     int userInput[4];
+    bool quit;
 
     cout << endl;
     spaces(49);
@@ -266,11 +282,18 @@ void processGuesses(int* code, bool rep) {
 
         cout << "Enter 4 digits: ";
 
-        enterGuess(userInput, rep);
+        quit = enterGuess(userInput, rep);
+
+        if (quit == true)
+        {
+           
+            spaces(45);
+            cout << "You've chosen to quit guessing!" << endl << endl;
+            break;
+        }
 
         bulls = checkForSameNumberAndPosition(code, userInput);
         cows = checkOnlyForSameNumbers(code, userInput);
-
 
 
         spaces(32);
@@ -538,7 +561,8 @@ int displayGameOverview()
     spaces(25); cout << WHITE << "Tip 1: Input the digits with one space between each one while guessing!" << RESET << endl<<endl;
     spaces(25); cout << WHITE << "Tip 2: If you are playing as the Germans, input the digits without spaces between them!" << RESET <<endl<< endl;
     spaces(25); cout << WHITE << "Tip 3: If you enter more numbers than you are required, the surplus numbers will be" << RESET << endl;
-    spaces(25); cout << WHITE << "passed to the next input(s)!" << RESET << endl << endl<<endl;
+    spaces(25); cout << WHITE << "passed to the next input(s)!" << RESET << endl << endl;
+    spaces(25); cout << WHITE << "Tip 4: You can quit guessing any time by entering the number 10!" << RESET << endl << endl<<endl;
     return chooseOption();
 }
 
