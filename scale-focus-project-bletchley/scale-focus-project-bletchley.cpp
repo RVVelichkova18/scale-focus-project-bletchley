@@ -287,8 +287,12 @@ void processGuesses(int* code, bool rep) {
     }
     else
     {
-        spaces(24);
-        cout << RED << "OH NO! You didn't crack the code! We still know nothing about the German " << endl;
+        spaces(18);
+        cout << RED << "OH NO! You didn't crack the code (it was";
+        for (int i = 0; i < 4; i++) {
+            cout << " "<<code[i];
+        }
+        cout<< ")! We still know nothing about the German " << endl;
         spaces(14);
         cout << "battleships' coordinates. But this war isn't over yet... we still have a chance of saving the world." << RESET << endl << endl;
     }
