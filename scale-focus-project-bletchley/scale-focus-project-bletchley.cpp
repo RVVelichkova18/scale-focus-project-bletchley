@@ -48,6 +48,25 @@ int readInt() {
 
 }
 
+int* readIntCode(int* code) {
+
+    int index=0;
+
+    while (index < 4) {
+        while (!(cin >> code[index])) {
+
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+            cout << endl;
+            cout << RED << "You have to enter a digit! Please, try again: " << RESET;
+            index = 0;
+        }
+        index++;
+    }
+
+    return code;
+}
+
 //Checks if the digits are from 0 to 7
 bool checkInRange(int* code) {
     for (int i = 0; i < 4; i++) {
@@ -162,10 +181,10 @@ bool enterNumbers(int* code) {
 
     bool quit=false;
 
+    readIntCode(code);
+
     for (int i = 0; i < 4; i++)
     {
-        code[i] = readInt();
-
         if (code[i] == 10)
         {
             quit=true;
@@ -178,11 +197,7 @@ bool enterNumbers(int* code) {
         {
             cout << endl;
             cout << RED << "You have to enter a digit between 0 and 7! Please, try again: " << RESET;
-            for (int i = 0; i < 4; i++)
-            {
-
-                code[i] = readInt();
-            }
+                readIntCode(code);
         }
     }
 
