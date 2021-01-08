@@ -5,7 +5,7 @@
 
 ## About this repository   <img src="https://media.discordapp.net/attachments/779421428739080262/796777531805925396/earth.png" width="35">
 ---
-This is our project based on a game called Bletchley for the Scale Focus Sprint in VSCPI[PGKPI - Burgas]. The main goal of the game is to crack the Germans’ battle ship coordinates by guessing them. Our game that consist of several playing options - Player VS Player repeating digits, Player VS Player non repeating digits, Player VS Computer repeating digits, Player VS Computer non repeating digits.
+This is our project based on a game called Bletchley for the Scale Focus Sprint in VSCPI - Burgas. The main goal of the game is to crack the Germans’ battle ship coordinates by guessing them. Our game that consist of several playing options - Player VS Player repeating and non-repeating digits, Player VS Computer repeating digits and non-repeating digits.
 
 ## Installation     <img src="https://media.discordapp.net/attachments/779421428739080262/796777537178828820/rocket2.png" width="35">
 
@@ -18,4 +18,4 @@ Download the game from [github](https://github.com/RVVelichkova18/scale-focus-pr
 - Martin Tsifundarov - Developer Front-End
 - Stanislava Andonova - Quality engineer
 - Aleksander Patrashkov - Code Checker
-- Dani Dimov - Documentary
+- Dani Dimov - Documentation
