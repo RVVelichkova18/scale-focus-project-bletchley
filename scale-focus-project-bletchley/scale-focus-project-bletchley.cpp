@@ -317,14 +317,27 @@ void processGuesses(int* code, bool rep) {
     cout << endl;
 
     if (bulls == 4){
+        
+        cout << GREEN;
+        spaces(15); cout << "  _____     _____     _    _     ____       _____              _________     ______          " << endl;
+        spaces(15); cout << " |         |     |    |\\   |    |          |     |       /\\        |        |            |   " << endl;
+        spaces(15); cout << " |         |     |    | \\  |    |   __     |   __|      /__\\       |        |______      |   " << endl;
+        spaces(15); cout << " |         |     |    |  \\ |    |     |    |   \\       /    \\      |               |     |   " << endl;
+        spaces(15); cout << " |_____    |_____|    |   \\|    |_____|    |    \\     /      \\     |         ______|     .   " << RESET << endl << endl;
         spaces(24);
-        cout << GREEN << "CONGRATULATIONS! You cracked the code! Now we know the coordinates of" << endl;
+        cout << GREEN << " You cracked the code! Now we know the coordinates of" << endl;
         spaces(18);
         cout << "the German battleships and will be able to destroy them once and for all! Great job!" << RESET << endl << endl;
     }
     else{
+        cout << RED;
+        spaces(33); cout << "     _____                   _    _     _____         " << endl;
+        spaces(33); cout << "    |     |    |     |       |\\   |    |     |     |   " << endl;
+        spaces(33); cout << "    |     |    |_____|       | \\  |    |     |     |   " << endl;
+        spaces(33); cout << "    |     |    |     |       |  \\ |    |     |     |   " << endl;
+        spaces(33); cout << "    |_____|    |     | ,     |   \\|    |_____|     .   " << RESET << endl << endl;
         spaces(18);
-        cout << RED << "OH NO! You didn't crack the code (it was";
+        cout << RED << " You didn't crack the code (it was";
         for (int i = 0; i < 4; i++) {
             cout << " "<<code[i];
         }
@@ -571,10 +584,11 @@ void spaces(int n){
     }
 }
 
-void displayGreeting(){
-    spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
-    spaces(42); cout << "|   Welcome to our Enigma game!  |" << endl;
-    spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+void displayGreeting()
+{
+    spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    spaces(42); cout << "|  Welcome to our Bletchley game!  |" << endl;
+    spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 }
 
 int main() {
