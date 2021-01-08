@@ -48,7 +48,7 @@ int readInt() {
 
 }
 
-int* readIntCode(int* code) {
+int* readIntGuess(int* code) {
 
     int index=0;
 
@@ -177,27 +177,24 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
 
 
 //Makes you enter numbers until they fit the range
-bool enterNumbers(int* code) {
+bool enterNumbersNoRep(int* code) {
 
     bool quit=false;
 
-    readIntCode(code);
+    readIntGuess(code);
 
-    for (int i = 0; i < 4; i++)
-    {
-        if (code[i] == 10)
-        {
+    for (int i = 0; i < 4; i++){
+        if (code[i] == 10){
             quit=true;
             break;
         }
     }
 
     if (quit == false) {
-        while (checkInRange(code) == false)
-        {
+        while (checkInRange(code) == false){
             cout << endl;
             cout << RED << "You have to enter a digit between 0 and 7! Please, try again: " << RESET;
-                readIntCode(code);
+                readIntGuess(code);
         }
     }
 
@@ -207,15 +204,15 @@ bool enterNumbers(int* code) {
 }
 
 //Makes you enter numbers until they don't repeat
-bool enterGuess(int* code, bool rep) {
+bool enterNumbersWithRep(int* code, bool rep) {
 
-    bool quit = enterNumbers(code);
+    bool quit = enterNumbersNoRep(code);
 
     if (quit == false) {
         if (rep == false) {
             while (checkForRepeatingNumbers(code) == true) {
                 cout << RED << "There must not be repeating digits! Please, try again: " << RESET;
-                enterNumbers(code);
+                enterNumbersNoRep(code);
             }
         }
     }
@@ -259,8 +256,7 @@ void enterHidden(int* code) {
 
     cout << endl;
 
-    for (int i = 0; i < 4; i++)
-    {
+    for (int i = 0; i < 4; i++){
         code[i] = strCode[i] - 48;
     }
 }
@@ -281,8 +277,10 @@ void processGuesses(int* code, bool rep) {
     bool quit;
 
     cout << endl;
+
     spaces(49);
     cout << BLUE << "PLAYER (THE ALLIANCE)" << RESET << endl<<endl;
+
     spaces(39);
     cout << "(Enter WITH spaces between the digits!)" << endl << endl;
 
@@ -297,10 +295,9 @@ void processGuesses(int* code, bool rep) {
 
         cout << "Enter 4 digits: ";
 
-        quit = enterGuess(userInput, rep);
+        quit = enterNumbersWithRep(userInput, rep);
 
-        if (quit == true)
-        {
+        if (quit == true){
            
             spaces(45);
             cout << "You've chosen to quit guessing!" << endl << endl;
@@ -319,15 +316,13 @@ void processGuesses(int* code, bool rep) {
 
     cout << endl;
 
-    if (bulls == 4)
-    {
+    if (bulls == 4){
         spaces(24);
         cout << GREEN << "CONGRATULATIONS! You cracked the code! Now we know the coordinates of" << endl;
         spaces(18);
         cout << "the German battleships and will be able to destroy them once and for all! Great job!" << RESET << endl << endl;
     }
-    else
-    {
+    else{
         spaces(18);
         cout << RED << "OH NO! You didn't crack the code (it was";
         for (int i = 0; i < 4; i++) {
@@ -364,8 +359,9 @@ int chooseOption() {
 }
 
 //Count the number of guesses when player play vs player
-int levelOne(int* code, bool rep) {
+int processlevelOne(int* code, bool rep) {
     cout << endl;
+
     spaces(50);
     cout << PURPLE << "PLAYER (THE GERMANS)" << RESET << endl << endl;
 
@@ -384,9 +380,10 @@ int levelOne(int* code, bool rep) {
 }
 
 //Count the number of guesses when player play vs computer
-int levelTwo(int* code, bool rep) {
+int processlevelTwo(int* code, bool rep) {
 
     cout << endl;
+
     spaces(20);
     cout << "THE COORDINATES OF THE GERMANS ARE A 4 - DIGIT CODE! TRY TO GUESS IT AND SAVE US!";
 
@@ -395,10 +392,7 @@ int levelTwo(int* code, bool rep) {
     else
         randomNumberNoRepetition(code);
 
-    cout << endl;
-
-
-    cout << endl << endl;
+    cout << endl << endl << endl;
 
     processGuesses(code, rep);
 
@@ -407,8 +401,7 @@ int levelTwo(int* code, bool rep) {
 
 
 //Shows the main menu
-void displayMainMenu()
-{
+void displayMainMenu(){
 
     int choice = 0;
 
@@ -430,8 +423,7 @@ void displayMainMenu()
         cout << "Enter an option: ";
         choice = readInt();
 
-        while (choice > 4 or choice < 1)
-        {
+        while (choice > 4 or choice < 1){
             cout << endl;
             cout << RED << "The number you enter has to be between 1 and 4! Please, try again: " << RESET;
             choice = readInt();
@@ -440,8 +432,7 @@ void displayMainMenu()
 
         system("cls");
 
-        switch (choice)
-        {
+        switch (choice){
         case 1:
             displayLevelOneOptions();
             break;
@@ -460,8 +451,7 @@ void displayMainMenu()
 }
 
 //Shows what are the options for level one
-void displayLevelOneOptions()
-{
+void displayLevelOneOptions(){
     spaces(37); cout << " ___________________________________________" << endl;
     spaces(37); cout << "|                                           |" << endl;
     spaces(37); cout << "|                  LEVEL 1                  |" << endl;
@@ -480,8 +470,7 @@ void displayLevelOneOptions()
     cout << "Enter an option: ";
     choice = readInt();
 
-    while (choice > 4 or choice < 1)
-    {
+    while (choice > 4 or choice < 1){
         cout << endl;
         cout << RED << "The number you enter has to be between 1 and 4! Please, try again: " << RESET;
         choice = readInt();
@@ -491,14 +480,13 @@ void displayLevelOneOptions()
 
     system("cls");
 
-    switch (choice)
-    {
+    switch (choice){
     case 1:
-        if (levelOne(code, false) == 2)
+        if (processlevelOne(code, false) == 2)
             exit(0);
         break;
     case 2:
-        if (levelOne(code, true) == 2)
+        if (processlevelOne(code, true) == 2)
             exit(0);
         break;
     case 3:
@@ -512,8 +500,7 @@ void displayLevelOneOptions()
 }
 
 //Shows what are the options for level two
-void displayLevelTwoOptions()
-{
+void displayLevelTwoOptions(){
     spaces(37); cout << " ___________________________________________" << endl;
     spaces(37); cout << "|                                           |" << endl;
     spaces(37); cout << "|                  LEVEL 2                  |" << endl;
@@ -532,8 +519,7 @@ void displayLevelTwoOptions()
     cout << "Enter an option: ";
     choice = readInt();
 
-    while (choice > 4 or choice < 1)
-    {
+    while (choice > 4 or choice < 1){
         cout << endl;
         cout << RED << "The number you enter has to be between 1 and 4! Please, try again: " << RESET;
         choice = readInt();
@@ -543,14 +529,13 @@ void displayLevelTwoOptions()
 
     system("cls");
 
-    switch (choice)
-    {
+    switch (choice){
     case 1:
-        if (levelTwo(code, false) == 2)
+        if (processlevelTwo(code, false) == 2)
             exit(0);
         break;
     case 2:
-        if (levelTwo(code, true) == 2)
+        if (processlevelTwo(code, true) == 2)
             exit(0);
         break;
     case 3:
@@ -563,8 +548,7 @@ void displayLevelTwoOptions()
 
 }
 
-int displayGameOverview()
-{
+int displayGameOverview(){
     cout << endl;
     spaces(25); cout << "                               GAME DESCRIPTION AND TIPS" << endl<<endl;
     spaces(25); cout << "  The Germans place a combination of 4 random digits in the range between 0 and 7," << endl;
@@ -581,16 +565,13 @@ int displayGameOverview()
     return chooseOption();
 }
 
-void spaces(int n)
-{
-    for (int i = 0; i < n; i++)
-    {
+void spaces(int n){
+    for (int i = 0; i < n; i++){
         cout << " ";
     }
 }
 
-void displayGreeting()
-{
+void displayGreeting(){
     spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     spaces(42); cout << "|   Welcome to our Enigma game!  |" << endl;
     spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
