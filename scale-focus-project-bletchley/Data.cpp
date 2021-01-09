@@ -3,12 +3,13 @@
 #include "Presentation.h"
 using namespace std;
 
-int readInt() {
+int readInt() 
+{
 
     int num;
 
-    while (!(cin >> num)) {
-
+    while (!(cin >> num)) 
+    {
         cin.clear();
         cin.ignore(INT_MAX, '\n');
         cout << endl;
@@ -19,40 +20,51 @@ int readInt() {
 
 }
 
-int* readIntGuess(int* code) {
+int* readIntGuess(int* code)
+{
 
     int index = 0;
 
-    while (index < 4) {
-        while (!(cin >> code[index])) {
-
+    while (index < 4) 
+    {
+        while (!(cin >> code[index])) 
+        {
             cin.clear();
             cin.ignore(INT_MAX, '\n');
             cout << endl;
             cout << RED << "You have to enter a digit! Please, try again: " << RESET;
             index = 0;
         }
+
         index++;
+        
     }
 
     return code;
 }
 
-bool checkInRange(int* code) {
-    for (int i = 0; i < 4; i++) {
-        if (code[i] < 0)
+bool checkInRange(int* code)
+{
+    for (int i = 0; i < 4; i++) 
+    {
+        if (code[i] < 0 or code[i] > 7) 
+        {
+
             return false;
-        else if (code[i] > 7)
-            return false;
+        }
     }
     return true;
 }
 
-bool checkForRepeatingNumbers(int* userGuess) {
+bool checkForRepeatingNumbers(int* userGuess) 
+{
 
-    for (int i = 1; i < 4; i++) {
-        for (int j = 0; j < i; j++) {
-            if (userGuess[i] == userGuess[j]) {
+    for (int i = 1; i < 4; i++) 
+    {
+        for (int j = 0; j < i; j++) 
+        {
+            if (userGuess[i] == userGuess[j]) 
+            {
                 return true;
             }
         }
@@ -61,43 +73,54 @@ bool checkForRepeatingNumbers(int* userGuess) {
     return false;
 }
 
-int randomInt() {
+int randomInt() 
+{
     return rand() % (7 - 0 + 1) + 0;
 }
 
-int* randomNumberWithRepetition(int* num) {
+int* randomNumberWithRepetition(int* num) 
+{
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) 
+    {
         num[i] = randomInt();
     }
 
     return num;
 }
 
-int* randomNumberNoRepetition(int* num) {
+int* randomNumberNoRepetition(int* num) 
+{
 
     num[0] = randomInt();
 
     bool noRep;
 
-    for (int i = 1; i < 4; i++) {
+    for (int i = 1; i < 4; i++) 
+    {
 
         noRep = false;
 
-        while (noRep == false) {
+        while (noRep == false) 
+        {
 
             int check = 0;
 
             num[i] = randomInt();
 
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; j < i; j++) 
+            {
 
-                if (num[i] != num[j])
+                if (num[i] != num[j]) 
+                {
                     check++;
+                }
             }
 
             if (check == i)
+            {
                 noRep = true;
+            }
         }
 
     }
@@ -105,11 +128,14 @@ int* randomNumberNoRepetition(int* num) {
     return num;
 }
 
-int checkForSameNumberAndPosition(int* code, int* userGuess) {
+int checkForSameNumberAndPosition(int* code, int* userGuess) 
+{
     int count = 0;
 
-    for (int i = 0; i < 4; i++) {
-        if (code[i] == userGuess[i]) {
+    for (int i = 0; i < 4; i++) 
+    {
+        if (code[i] == userGuess[i]) 
+        {
             count++;
             userGuess[i] = userGuess[i] * (-1);
         }
@@ -118,12 +144,16 @@ int checkForSameNumberAndPosition(int* code, int* userGuess) {
     return count;
 }
 
-int checkOnlyForSameNumbers(int* code, int* userGuess) {
+int checkOnlyForSameNumbers(int* code, int* userGuess) 
+{
     int count = 0;
 
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (code[i] == userGuess[j] and i != j and code[i] != abs(userGuess[i])) {
+    for (int i = 0; i < 4; i++) 
+    {
+        for (int j = 0; j < 4; j++) 
+        {
+            if (code[i] == userGuess[j] and i != j and code[i] != abs(userGuess[i])) 
+            {
                 count++;
                 userGuess[j] = userGuess[j] * (-1);
                 break;
@@ -134,21 +164,26 @@ int checkOnlyForSameNumbers(int* code, int* userGuess) {
     return count;
 }
 
-bool enterNumbersNoRep(int* code) {
+bool enterNumbersNoRep(int* code) 
+{
 
     bool quit = false;
 
     readIntGuess(code);
 
-    for (int i = 0; i < 4; i++) {
-        if (code[i] == 10) {
+    for (int i = 0; i < 4; i++) 
+    {
+        if (code[i] == 10) 
+        {
             quit = true;
             break;
         }
     }
 
-    if (quit == false) {
-        while (checkInRange(code) == false) {
+    if (quit == false) 
+    {
+        while (checkInRange(code) == false) 
+        {
             cout << endl;
             cout << RED << "You have to enter a digit between 0 and 7! Please, try again: " << RESET;
             readIntGuess(code);
@@ -160,13 +195,17 @@ bool enterNumbersNoRep(int* code) {
     return quit;
 }
 
-bool enterNumbersWithRep(int* code, bool rep) {
+bool enterNumbersWithRep(int* code, bool rep) 
+{
 
     bool quit = enterNumbersNoRep(code);
 
-    if (quit == false) {
-        if (rep == false) {
-            while (checkForRepeatingNumbers(code) == true) {
+    if (quit == false) 
+    {
+        if (rep == false) 
+        {
+            while (checkForRepeatingNumbers(code) == true) 
+            {
                 cout << RED << "There must not be repeating digits! Please, try again: " << RESET;
                 enterNumbersNoRep(code);
             }
@@ -176,19 +215,19 @@ bool enterNumbersWithRep(int* code, bool rep) {
     return quit;
 }
 
-void enterHidden(int* code) {
-
+void enterHidden(int* code) 
+{
     string strCode = "";
     int digit;
 
-
-
-    while (strCode.size() < 4) {
+    while (strCode.size() < 4) 
+    {
 
         digit = _getch();
         cout << YELLOW << '*' << RESET;
 
-        while (digit < 48 or digit>57) {
+        while (digit < 48 or digit>57) 
+        {
             cout << endl;
             strCode = "";
             cout << endl << RED << "You have to enter a digit! Please, try again: " << RESET;
@@ -196,7 +235,8 @@ void enterHidden(int* code) {
             cout << YELLOW << '*' << RESET;
         }
 
-        while (digit > 55) {
+        while (digit > 55) 
+        {
             cout << endl;
             strCode = "";
             cout << endl << RED << "You have to enter a digit between 0 and 7! Please, try again: " << RESET;
@@ -212,22 +252,26 @@ void enterHidden(int* code) {
 
     cout << endl;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) 
+    {
         code[i] = strCode[i] - 48;
     }
 }
 
-void enterHiddenNoRep(int* code) {
+void enterHiddenNoRep(int* code) 
+{
 
     enterHidden(code);
 
-    while (checkForRepeatingNumbers(code) == true) {
+    while (checkForRepeatingNumbers(code) == true) 
+    {
         cout << endl << RED << "There must not be repeating digits! Please, try again: " << RESET;
         enterHidden(code);
     }
 }
 
-void processGuesses(int* code, bool rep) {
+void processGuesses(int* code, bool rep) 
+{
     int guesses = 0, cows, bulls = 0;
     int userInput[4];
     bool quit;
@@ -240,7 +284,8 @@ void processGuesses(int* code, bool rep) {
     spaces(39);
     cout << "(Enter WITH spaces between the digits!)" << endl << endl;
 
-    while (guesses < 13 and bulls < 4) {
+    while (guesses < 13 and bulls < 4) 
+    {
         guesses++;
 
         cout << " ----------" << endl;
@@ -253,7 +298,8 @@ void processGuesses(int* code, bool rep) {
 
         quit = enterNumbersWithRep(userInput, rep);
 
-        if (quit == true) {
+        if (quit == true) 
+        {
 
             spaces(45);
             cout << "You've chosen to quit guessing!" << endl << endl;
@@ -272,13 +318,15 @@ void processGuesses(int* code, bool rep) {
 
     cout << endl;
 
-    if (bulls == 4) {
+    if (bulls == 4) 
+    {
         spaces(24);
         cout << GREEN << "CONGRATULATIONS! You cracked the code! Now we know the coordinates of" << endl;
         spaces(18);
         cout << "the German battleships and will be able to destroy them once and for all! Great job!" << RESET << endl << endl;
     }
-    else {
+    else 
+    {
         spaces(18);
         cout << RED << "OH NO! You didn't crack the code (it was";
         for (int i = 0; i < 4; i++) {
@@ -291,7 +339,8 @@ void processGuesses(int* code, bool rep) {
     cout << endl;
 }
 
-int processlevelOne(int* code, bool rep) {
+int processlevelOne(int* code, bool rep) 
+{
     cout << endl;
 
     spaces(50);
@@ -299,10 +348,14 @@ int processlevelOne(int* code, bool rep) {
 
     cout << "Enter 4 digits (without spaces between them): ";
 
-    if (rep == true)
+    if (rep == true) 
+    {
         enterHidden(code);
-    else
+    }
+    else 
+    {
         enterHiddenNoRep(code);
+    }
 
     cout << endl;
 
@@ -311,7 +364,8 @@ int processlevelOne(int* code, bool rep) {
     return chooseOption();
 }
 
-int processlevelTwo(int* code, bool rep) {
+int processlevelTwo(int* code, bool rep) 
+{
 
     cout << endl;
 
@@ -319,9 +373,13 @@ int processlevelTwo(int* code, bool rep) {
     cout << "THE COORDINATES OF THE GERMANS ARE A 4 - DIGIT CODE! TRY TO GUESS IT AND SAVE US!";
 
     if (rep == true)
+    {
         randomNumberWithRepetition(code);
-    else
+    }
+    else 
+    {
         randomNumberNoRepetition(code);
+    }
 
     cout << endl << endl << endl;
 

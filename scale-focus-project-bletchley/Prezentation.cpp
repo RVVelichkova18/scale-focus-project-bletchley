@@ -3,7 +3,8 @@
 #include "Presentation.h"
 using namespace std;
 
-int chooseOption() {
+int chooseOption() 
+{
 
     int choice;
 
@@ -15,7 +16,8 @@ int chooseOption() {
 
     choice = readInt();
 
-    while (choice < 1 or choice>2) {
+    while (choice < 1 or choice>2) 
+    {
         cout << endl;
         cout << RED << "The number you enter has to be either 1 or 2! Please, try again: " << RESET;
         choice = readInt();
@@ -26,7 +28,8 @@ int chooseOption() {
     return choice;
 }
 
-void displayMainMenu() {
+void displayMainMenu() 
+{
 
     int choice = 0;
 
@@ -48,7 +51,8 @@ void displayMainMenu() {
         cout << "Enter an option: ";
         choice = readInt();
 
-        while (choice > 4 or choice < 1) {
+        while (choice > 4 or choice < 1) 
+        {
             cout << endl;
             cout << RED << "The number you enter has to be between 1 and 4! Please, try again: " << RESET;
             choice = readInt();
@@ -57,25 +61,34 @@ void displayMainMenu() {
 
         system("cls");
 
-        switch (choice) {
-        case 1:
-            displayLevelOneOptions();
-            break;
-        case 2:
-            displayLevelTwoOptions();
-            break;
-        case 3:
-            if (displayGameOverview() == 2)
+        switch (choice) 
+        {
+            case 1:
+
+                displayLevelOneOptions();
+                break;
+
+            case 2:
+
+                displayLevelTwoOptions();
+                break;
+
+            case 3:
+
+                if (displayGameOverview() == 2)
+                    exit(0);
+                break;
+
+            case 4:
+
                 exit(0);
-            break;
-        case 4:
-            exit(0);
-            break;
+                break;
         }
     }
 }
 
-void displayLevelOneOptions() {
+void displayLevelOneOptions() 
+{
     spaces(37); cout << " ___________________________________________" << endl;
     spaces(37); cout << "|                                           |" << endl;
     spaces(37); cout << "|                  LEVEL 1                  |" << endl;
@@ -94,7 +107,8 @@ void displayLevelOneOptions() {
     cout << "Enter an option: ";
     choice = readInt();
 
-    while (choice > 4 or choice < 1) {
+    while (choice > 4 or choice < 1) 
+    {
         cout << endl;
         cout << RED << "The number you enter has to be between 1 and 4! Please, try again: " << RESET;
         choice = readInt();
@@ -104,26 +118,35 @@ void displayLevelOneOptions() {
 
     system("cls");
 
-    switch (choice) {
-    case 1:
-        if (processlevelOne(code, false) == 2)
+    switch (choice) 
+    {
+        case 1:
+
+            if (processlevelOne(code, false) == 2)
+                exit(0);
+            break;
+
+        case 2:
+
+            if (processlevelOne(code, true) == 2)
+                exit(0);
+            break;
+
+        case 3:
+
+            displayMainMenu();
+            break;
+
+        case 4:
+
             exit(0);
-        break;
-    case 2:
-        if (processlevelOne(code, true) == 2)
-            exit(0);
-        break;
-    case 3:
-        displayMainMenu();
-        break;
-    case 4:
-        exit(0);
-        break;
+            break;
     }
 
 }
 
-void displayLevelTwoOptions() {
+void displayLevelTwoOptions() 
+{
     spaces(37); cout << " ___________________________________________" << endl;
     spaces(37); cout << "|                                           |" << endl;
     spaces(37); cout << "|                  LEVEL 2                  |" << endl;
@@ -142,7 +165,8 @@ void displayLevelTwoOptions() {
     cout << "Enter an option: ";
     choice = readInt();
 
-    while (choice > 4 or choice < 1) {
+    while (choice > 4 or choice < 1) 
+    {
         cout << endl;
         cout << RED << "The number you enter has to be between 1 and 4! Please, try again: " << RESET;
         choice = readInt();
@@ -152,26 +176,35 @@ void displayLevelTwoOptions() {
 
     system("cls");
 
-    switch (choice) {
-    case 1:
-        if (processlevelTwo(code, false) == 2)
+    switch (choice) 
+    {
+        case 1:
+
+            if (processlevelTwo(code, false) == 2)
+                exit(0);
+            break;
+
+        case 2:
+
+            if (processlevelTwo(code, true) == 2)
+                exit(0);
+            break;
+
+        case 3:
+
+            displayMainMenu();
+            break;
+
+        case 4:
+
             exit(0);
-        break;
-    case 2:
-        if (processlevelTwo(code, true) == 2)
-            exit(0);
-        break;
-    case 3:
-        displayMainMenu();
-        break;
-    case 4:
-        exit(0);
-        break;
+            break;
     }
 
 }
 
-int displayGameOverview() {
+int displayGameOverview() 
+{
     cout << endl;
     spaces(25); cout << "                               GAME DESCRIPTION AND TIPS" << endl << endl;
     spaces(25); cout << "  The Germans place a combination of 4 random digits in the range between 0 and 7," << endl;
@@ -188,13 +221,16 @@ int displayGameOverview() {
     return chooseOption();
 }
 
-void spaces(int n) {
-    for (int i = 0; i < n; i++) {
+void spaces(int n) 
+{
+    for (int i = 0; i < n; i++) 
+    {
         cout << " ";
     }
 }
 
-void displayGreeting() {
+void displayGreeting() 
+{
     spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     spaces(42); cout << "|   Welcome to our Enigma game!  |" << endl;
     spaces(42); cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
