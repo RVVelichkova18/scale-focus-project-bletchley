@@ -166,11 +166,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="checkInrangeUnitTests.cpp" />
+    <ClCompile Include="randomNumbersFunctionsUnitTests.cpp" />
     <ClCompile Include="readIntUnitTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="randomIntForUnitTests.h" />
+    <ClInclude Include="randomInt.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\scale-focus-project-bletchley\scale-focus-project-bletchley.vcxproj">

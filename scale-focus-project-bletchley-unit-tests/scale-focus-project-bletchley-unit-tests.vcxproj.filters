@@ -30,12 +30,15 @@
     <ClCompile Include="readIntUnitTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="randomNumbersFunctionsUnitTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="randomIntForUnitTests.h">
+    <ClInclude Include="randomInt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

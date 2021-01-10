@@ -73,11 +73,6 @@ bool checkForRepeatingNumbers(int* userGuess)
     return false;
 }
 
-int randomInt() 
-{
-    return rand() % (7 - 0 + 1) + 0;
-}
-
 int* randomNumberWithRepetition(int* num) 
 {
 
