@@ -170,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="randomIntForUnitTests.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\scale-focus-project-bletchley\scale-focus-project-bletchley.vcxproj">

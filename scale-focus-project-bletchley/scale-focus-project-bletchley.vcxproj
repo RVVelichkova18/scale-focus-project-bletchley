@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClInclude Include="Data.h" />
     <ClInclude Include="Presentation.h" />
+    <ClInclude Include="randomInt.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
