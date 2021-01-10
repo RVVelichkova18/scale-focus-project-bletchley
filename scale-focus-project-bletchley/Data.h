@@ -42,18 +42,4 @@ int checkForSameNumberAndPosition(int* code, int* userGuess);
 //Checks if trere are numbers that are same but they aren't on the same position
 int checkOnlyForSameNumbers(int* code, int* userGuess);
 
-//Makes you enter numbers until they fit the range
-bool enterNumbersNoRep(int* code);
 
-//Makes you enter numbers until they don't repeat
-bool enterNumbersWithRep(int* code, bool rep);
-
-void enterHidden(int* code);
-
-void enterHiddenNoRep(int* code);
-
-void processGuesses(int* code, bool rep);
-
-int processlevelOne(int* code, bool rep);
-
-int processlevelTwo(int* code, bool rep);
