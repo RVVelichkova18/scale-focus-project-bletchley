@@ -2,6 +2,8 @@
 #include <string>
 #include <conio.h>
 #include <time.h>
+#include <iostream>
+#include <sstream>
 using namespace std;
 
 #define RESET   "\033[0m"
@@ -12,8 +14,10 @@ using namespace std;
 #define PURPLE  "\033[1;95m"
 #define WHITE   "\033[4;37m"
 
+#define MSG_INVALID_SYMBOL_TRY_AGAIN "You have to enter a digit! Please, try again: "
+
 //Checks if the input is number
-int readInt();
+int readInt(std::istream& input = std::cin, std::ostream& output = std::cout);
 
 int* readIntGuess(int* code);
 
@@ -24,7 +28,7 @@ bool checkInRange(int* code);
 bool checkForRepeatingNumbers(int* userGuess);
 
 //Returns random number from 0 to 7
-int randomInt();
+extern int randomInt();
 
 //Returns array with random numbers that can be repeated
 int* randomNumberWithRepetition(int* num);

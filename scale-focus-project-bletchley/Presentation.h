@@ -4,14 +4,6 @@
 #include <time.h>
 using namespace std;
 
-#define RESET   "\033[0m"
-#define RED     "\033[1;91m" 
-#define GREEN   "\033[1;92m" 
-#define YELLOW  "\033[1;93m"  
-#define BLUE    "\033[1;96m"
-#define PURPLE  "\033[1;95m"
-#define WHITE   "\033[4;37m"
-
 int chooseOption();
 
 //Shows the main menu

@@ -3,17 +3,17 @@
 #include "Presentation.h"
 using namespace std;
 
-int readInt() 
+int readInt(istream& input, ostream& output)
 {
 
     int num;
 
-    while (!(cin >> num)) 
+    while (!(input >> num)) 
     {
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
-        cout << endl;
-        cout << RED << "You have to enter a digit! Please, try again: " << RESET;
+        input.clear();
+        input.ignore(INT_MAX, '\n');
+        output << endl;
+        output << RED << MSG_INVALID_SYMBOL_TRY_AGAIN << RESET;
     }
 
     return num;
