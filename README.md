@@ -15,7 +15,7 @@ Download the game from [github](https://github.com/RVVelichkova18/scale-focus-pr
 
 - Radina Velichkova - Scrum Trainer
 - Kristina Bolashikova - Developer Back-End
-- Martin Tsifundarov - Developer Front-End
+- Martin Tsifondarov - Developer Front-End
 - Stanislava Andonova - Quality engineer
 - Aleksander Patrashkov - Code Checker
 - Dani Dimov - Documentation
