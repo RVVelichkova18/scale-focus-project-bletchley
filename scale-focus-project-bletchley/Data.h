@@ -6,6 +6,7 @@
 #include <sstream>
 using namespace std;
 
+//Used for coloring the output text
 #define RESET   "\033[0m"
 #define RED     "\033[1;91m" 
 #define GREEN   "\033[1;92m" 
@@ -19,6 +20,7 @@ using namespace std;
 //Checks if the input is number
 int readInt(std::istream& input = std::cin, std::ostream& output = std::cout);
 
+//Accepts for int values
 int* readIntGuess(int* code);
 
 //Checks if the digits are from 0 to 7
@@ -41,5 +43,3 @@ int checkForSameNumberAndPosition(int* code, int* userGuess);
 
 //Checks if trere are numbers that are same but they aren't on the same position
 int checkOnlyForSameNumbers(int* code, int* userGuess);
-
-
